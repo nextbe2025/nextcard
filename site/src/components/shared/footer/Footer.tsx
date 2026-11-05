@@ -52,8 +52,9 @@ const Footer = ({ className }: { className?: string }) => {
                   <Image src={darkLogo} alt="NEXTCARD" className="w-full h-auto" />
                 </figure>
                 <p className="text-accent/60 text-tagline-1 mt-3 mb-4 font-normal">
-                  A <strong>NEXTCARD</strong> é uma empresa especialista em Automação Comercial, com soluções para
-                  controle de acesso de empresas e gestão de estabelecimentos gastronômicos.
+                  A <strong>NEXTCARD</strong> é especialista em Automação Comercial, com soluções tecnológicas que otimizam
+                  a gestão, aumentam a eficiência operacional e impulsionam os resultados de negócios do setor de Food
+                  Service.
                 </p>
                 <div className="flex items-center gap-3">
                   {socialLinks.map((social, index) => (

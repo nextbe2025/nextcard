@@ -32,9 +32,8 @@ const VisionStatement = () => {
         <div className="mx-auto max-w-[780px] text-center">
           <RevealAnimation delay={0.2}>
             <p>
-              Somos uma empresa nacional especializada em soluções de automação comercial para diversos nichos de
-              mercado. Trabalhamos para pessoas em um mercado de alto potencial, fornecendo projetos customizados —
-              juntos, construímos algo muito maior do que individualmente.
+              Somos uma empresa nacional especializada em soluções de automação comercial, com projetos customizados
+              para cada operação.
             </p>
           </RevealAnimation>
         </div>

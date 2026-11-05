@@ -2,7 +2,7 @@ import { History, Printer, Users } from 'lucide-react';
 import NumberAnimation from '../animation/NumberAnimation';
 import RevealAnimation from '../animation/RevealAnimation';
 import BackgroundLines from '../shared/BackgroundLines';
-import { StoreIcon } from '../shared/BrandIcons';
+import { MapPinIcon } from '../shared/BrandIcons';
 import ClientLogos from './ClientLogos';
 
 const WhyChooseUs = () => {
@@ -19,8 +19,9 @@ const WhyChooseUs = () => {
           <RevealAnimation delay={0.2}>
             <p className="lg:max-w-[658px] max-w-[470px] mx-auto">
               Tecnologia presente em operações que atendem milhares de consumidores todos os dias. A{' '}
-              <strong>NEXTCARD</strong> não é uma startup de software abstrata: desenvolvemos e entregamos os
-              equipamentos e o software que sustentam a operação, do primeiro ao último atendimento do dia.
+              <strong>NEXTCARD</strong> é uma empresa comprometida em apoiar empreendedores a alcançarem melhores
+              resultados. Com nosso know-how, experiência comprovada e ecossistema de soluções, entregamos resultados
+              reais e duradouros para o seu negócio!
             </p>
           </RevealAnimation>
         </div>
@@ -56,15 +57,11 @@ const WhyChooseUs = () => {
               </div>
               <div className="py-6 space-y-6 flex-1 md:border-r md:border-b-0 border-b border-b-accent/20 dark:border-b-stroke-6 border-r-accent/20 dark:border-r-stroke-6">
                 <div className="xl:w-20 xl:h-[52px] w-16 h-10 bg-primary-700 rounded-full mx-auto flex items-center justify-center">
-                  <StoreIcon className="size-6 text-white" />
+                  <MapPinIcon className="size-6 text-white" />
                 </div>
                 <div className="text-center">
                   <h3 className="text-white flex flex-wrap items-center justify-center gap-x-1 xl:text-heading-6 text-tagline-1 font-normal">
-                    <span className="flex items-center whitespace-nowrap">
-                      <NumberAnimation number={7} speed={1000} interval={180} rooms={1} heightSpaceRatio={2.2} />
-                      mil+
-                    </span>
-                    <span>PDVs ativos</span>
+                    <span>Atendimento em todo o Brasil</span>
                   </h3>
                 </div>
               </div>
@@ -75,7 +72,7 @@ const WhyChooseUs = () => {
                 <div className="text-center">
                   <h3 className="text-white flex flex-wrap items-center justify-center gap-x-1 xl:text-heading-6 text-tagline-1 font-normal">
                     <span className="flex items-center whitespace-nowrap">
-                      <NumberAnimation number={5} speed={1000} interval={180} rooms={1} heightSpaceRatio={2.2} />
+                      <NumberAnimation number={3} speed={1000} interval={180} rooms={1} heightSpaceRatio={2.2} />
                       M+
                     </span>
                     <span>comandas produzidas</span>

@@ -7,7 +7,7 @@ import RevealAnimation from '../animation/RevealAnimation';
 interface AchievementItem {
   id?: string;
   icon: ComponentType<{ className?: string }>;
-  number: number;
+  number?: number;
   suffix?: string;
   label: string;
   bgColor: string;
@@ -47,16 +47,18 @@ const OurAchievements = ({
                 <achievement.icon />
               </div>
               <h6 className="flex items-center gap-1 text-white">
-                <div className="font-inherit flex items-center text-white">
-                  <NumberAnimation
-                    number={achievement.number}
-                    speed={achievement.speed || 2000}
-                    interval={achievement.interval || 280}
-                    space={achievement.space || 12}
-                    rooms={achievement.rooms || 2}>
-                    <span className="font-inherit">{achievement.suffix || ''}</span>
-                  </NumberAnimation>
-                </div>
+                {achievement.number !== undefined && (
+                  <div className="font-inherit flex items-center text-white">
+                    <NumberAnimation
+                      number={achievement.number}
+                      speed={achievement.speed || 2000}
+                      interval={achievement.interval || 280}
+                      space={achievement.space || 12}
+                      rooms={achievement.rooms || 2}>
+                      <span className="font-inherit">{achievement.suffix || ''}</span>
+                    </NumberAnimation>
+                  </div>
+                )}
                 {achievement.label}
               </h6>
             </div>

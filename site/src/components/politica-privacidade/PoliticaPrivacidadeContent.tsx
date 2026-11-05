@@ -252,10 +252,7 @@ const PoliticaPrivacidadeContent = () => {
                       <label
                         htmlFor="agree-terms"
                         className="text-tagline-3 text-secondary/60 dark:text-accent/60 cursor-pointer">
-                        I agree with the{' '}
-                        <Link href="/termos-de-uso" className="text-primary-500 text-tagline-3 underline">
-                          terms and conditions
-                        </Link>
+                        I agree with the terms and conditions
                       </label>
                     </fieldset>
                     <button

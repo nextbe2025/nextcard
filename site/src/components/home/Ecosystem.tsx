@@ -72,8 +72,8 @@ const Ecosystem = () => {
             </RevealAnimation>
             <RevealAnimation delay={0.3}>
               <p className="mx-auto max-w-[680px]">
-                Não vendemos equipamentos isolados: entregamos uma infraestrutura para a sua operação. Veja um exemplo
-                real de como as soluções conversam entre si, do primeiro ao último passo do cliente.
+                Entregamos uma infraestrutura integrada, com soluções que se conectam e otimizam toda a operação, do
+                primeiro ao último passo da jornada do cliente.
               </p>
             </RevealAnimation>
           </div>
@@ -88,7 +88,7 @@ const Ecosystem = () => {
                 alt="Fluxo NEXTCARD em um restaurante: entrada com catraca expedidora, comanda, totem de autoatendimento e saída com catraca receptora"
                 fill
                 sizes="(min-width: 1280px) 1240px, 100vw"
-                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+                className="object-cover saturate-[.8] transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
               />
               <div
                 aria-hidden

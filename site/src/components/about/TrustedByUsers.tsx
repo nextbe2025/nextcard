@@ -2,14 +2,14 @@ import bgImg from '@public/images/backgrounds/fundo-preto-vermelho-luzes-diagona
 import Image from 'next/image';
 import { FC } from 'react';
 import RevealAnimation from '../animation/RevealAnimation';
-import { CheckCircleIcon, HeartIcon, ShieldCheckIcon, StarIcon, UsersIcon } from '../shared/BrandIcons';
+import { CheckCircleIcon, HeartIcon, ShieldCheckIcon, TargetIcon, UsersIcon } from '../shared/BrandIcons';
 
 const values = [
-  { label: 'Colaboração', icon: UsersIcon },
-  { label: 'Respeito', icon: HeartIcon },
   { label: 'Transparência', icon: ShieldCheckIcon },
-  { label: 'Excelência', icon: StarIcon },
-  { label: 'Compromisso', icon: CheckCircleIcon },
+  { label: 'Respeito', icon: HeartIcon },
+  { label: 'Comprometimento', icon: CheckCircleIcon },
+  { label: 'Foco no Cliente', icon: TargetIcon },
+  { label: 'Colaboração', icon: UsersIcon },
 ];
 
 // 5 values: 3 per row on the first line, 2 wider ones on the second so both rows fill the width.

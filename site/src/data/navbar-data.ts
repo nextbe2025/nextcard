@@ -7,7 +7,7 @@ export const mobileMenuData: MobileMenuGroup[] = [
     id: 'solucoes',
     title: 'Soluções',
     submenu: [
-      { id: 'totem-autoatendimento', label: 'Totens', href: '/totem-autoatendimento', icon: KioskIcon },
+      { id: 'totem-autoatendimento', label: 'Totem de Autoatendimento e Autopagamento', href: '/totem-autoatendimento', icon: KioskIcon },
       { id: 'catracas', label: 'Catraca Expedidora e Receptora', href: '/catracas', icon: TurnstileIcon },
       { id: 'comandas', label: 'Comandas Eletrônicas', href: '/comandas-eletronicas', icon: TicketIcon },
     ],

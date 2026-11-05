@@ -33,8 +33,8 @@ const steps: Step[] = [
   {
     id: 4,
     icon: HeadsetIcon,
-    title: 'Acompanhamos a instalação',
-    items: ['Planejamento do projeto', 'Instalação dos equipamentos', 'Suporte especializado'],
+    title: 'Do projeto ao pós-venda',
+    items: ['Planejamento do projeto', 'Instalação dos equipamentos', 'Suporte no pós-venda'],
   },
 ];
 

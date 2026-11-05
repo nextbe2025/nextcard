@@ -45,7 +45,7 @@ type SolutionLink = {
 };
 
 const solutionLinks: SolutionLink[] = [
-  { label: 'Totens', href: '/totem-autoatendimento', icon: TotemIcon },
+  { label: 'Totem de Autoatendimento e Autopagamento', href: '/totem-autoatendimento', icon: TotemIcon },
   { label: 'Catraca Expedidora e Receptora', href: '/catracas', icon: GateOutIcon },
   { label: 'Comandas Eletrônicas', href: '/comandas-eletronicas', icon: CardIcon },
 ];

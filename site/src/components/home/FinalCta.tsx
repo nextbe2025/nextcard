@@ -13,8 +13,8 @@ const FinalCta = () => {
           </RevealAnimation>
           <RevealAnimation delay={0.2}>
             <p className="text-accent/70 mx-auto max-w-[520px]">
-              Conte pra gente como funciona a sua operação hoje e receba uma proposta com os equipamentos certos para
-              o seu negócio.
+              Conte para a gente como funciona sua operação e nosso time de especialistas apresentará a melhor solução
+              e proposta para o seu negócio.
             </p>
           </RevealAnimation>
           <RevealAnimation delay={0.3}>

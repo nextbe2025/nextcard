@@ -1,6 +1,7 @@
 import cabe from '@public/images/clients/Logo-CABE.png';
 import park from '@public/images/clients/logo-park-do-churrasco.webp';
 import tulio from '@public/images/clients/Posto-Tulio.png';
+import redeSim from '@public/images/clients/Rede-SIM.png';
 import Image, { StaticImageData } from 'next/image';
 import RevealAnimation from '../animation/RevealAnimation';
 import BackgroundLines from '../shared/BackgroundLines';
@@ -39,6 +40,14 @@ const projects: Project[] = [
     text: 'Projeto completo de controle de acesso e gestão de consumo na loja de conveniência, incluindo o Clube do Caminhoneiro.',
     highlights: ['7 unidades', 'Ecossistema NEXTCARD completo'],
     logo: tulio,
+  },
+  {
+    name: 'Rede SIM',
+    place: 'RS, SC e PR',
+    segment: 'Loja de conveniência',
+    text: 'Projeto completo com nosso ecossistema: catracas expedidoras, comandas eletrônicas e totens de autopagamento.',
+    highlights: ['18 unidades', 'Ecossistema NEXTCARD completo'],
+    logo: redeSim,
   },
 ];
 

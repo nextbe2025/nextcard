@@ -1,12 +1,12 @@
 import RevealAnimation from '../animation/RevealAnimation';
 import BackgroundLines from '../shared/BackgroundLines';
 import BackgroundMark from '../shared/BackgroundMark';
-import { CalendarIcon, KioskIcon, UsersIcon, ZapIcon } from '../shared/BrandIcons';
+import { CalendarIcon, MapPinIcon, UsersIcon, ZapIcon } from '../shared/BrandIcons';
 import OurAchievements from '../shared/OurAchievements';
 
 const YearsIcon = () => <CalendarIcon className="size-6 text-white" />;
 const ClientsIcon = () => <UsersIcon className="size-6 text-white" />;
-const PdvsIcon = () => <KioskIcon className="size-6 text-white" />;
+const BrasilIcon = () => <MapPinIcon className="size-6 text-white" />;
 
 const nextcardAchievements = [
   {
@@ -30,14 +30,10 @@ const nextcardAchievements = [
     rooms: 1,
   },
   {
-    id: 'pdvs-ativos',
-    icon: PdvsIcon,
-    number: 7,
-    label: 'mil+ PDVs ativos',
+    id: 'todo-o-brasil',
+    icon: BrasilIcon,
+    label: 'Atendimento em todo o Brasil',
     bgColor: 'bg-primary-700',
-    speed: 1200,
-    interval: 220,
-    rooms: 1,
   },
 ];
 

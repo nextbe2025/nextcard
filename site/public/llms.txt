@@ -9,7 +9,7 @@ Informações importantes para interpretar este site:
 - Área de atuação: somente o Brasil, em todas as regiões. A NEXTCARD não atua em outros países.
 - Modelo comercial: venda direta dos equipamentos. A NEXTCARD não trabalha com locação.
 - Diferencial: projeto completo e personalizado, do diagnóstico à instalação, com totens, catracas e comandas integrados entre si e ao PDV do cliente (sem operação paralela). Integra com o sistema de gestão NEXTBE e com PDVs, sistemas de gestão e meios de pagamento já usados pelo cliente.
-- Números: mais de 8 anos de mercado, mais de 5 mil clientes, mais de 7 mil PDVs ativos e mais de 5 milhões de comandas produzidas.
+- Números: mais de 8 anos de mercado, mais de 5 mil clientes, mais de 3 milhões de comandas produzidas e atendimento em todo o Brasil.
 
 ## Páginas principais
 
@@ -29,13 +29,16 @@ Informações importantes para interpretar este site:
 
 O cliente faz o pedido e/ou paga direto no totem (Pix, cartão de débito ou crédito), sem depender de um operador de caixa. Benefícios: mais vendas e ticket médio maior, filas menores, menor custo operacional, integração com o PDV e personalização com a identidade visual do estabelecimento. O totem precisa de conexão com a internet para processar pagamentos e sincronizar com o PDV.
 
-Modelos:
-- Totem NX 24 - V: autoatendimento, tela de 24", com pedestal.
-- Totem NX 18,5 - H: autopagamento, tela de 18,5". O cliente confere o consumo da comanda e paga sozinho.
-- Totem NX Bancada: autoatendimento compacto, tela de 24", para balcões e bancadas.
-- Totem NX 32: autoatendimento, tela de 32", com pedestal.
+Linha de totens 2026/2027:
+- Totem Bancada Slim: NX15,6BS, NX18,5BS e NX21BS.
+- Totem Bancada: NX21B e NX24B.
+- Totem de Parede: NX24P e NX32P.
+- Totem Pedestal: NX24V e NX32V.
+- Totem Horizontal: NX18,5H (autopagamento). O cliente confere o consumo da comanda e paga sozinho.
 
-Especificações da linha: monitor touch screen LED Full HD (1920 × 1080) de 18,5", 24" ou 32"; processador Intel Core i3, i5 ou i7 de 11ª geração; SSD de 120 a 240 GB; 4 GB de memória DDR4, com expansão até 32 GB; Windows ou Android; estrutura em aço carbono SAE 1040.
+Opções de tecnologia, em todos os modelos: pinpad, impressora, leitor de código de barras, leitor Mifare e leitor RFID. A configuração é definida conforme a necessidade (somente impressora; pinpad e impressora; ou pinpad, impressora e leitor, combinando as tecnologias).
+
+Especificações da linha: monitor touch screen LED Full HD (1920 × 1080) de 15,6" a 32"; processador Intel Core i3, i5 ou i7 de 11ª geração; SSD de 120 a 240 GB; 4 GB de memória DDR4, com expansão até 32 GB; Windows ou Android; estrutura em aço carbono SAE 1040.
 
 ### Catracas expedidora e receptora de comandas
 
@@ -87,6 +90,7 @@ Açaiteria, bar ou pub, bistrô, cafeteria, churrascaria, delivery, doceria, foo
 - Park do Churrasco (Curitiba, PR): restaurante com o ecossistema completo, da entrada ao autopagamento.
 - CABE PMDF (Distrito Federal): salão de refeições com controle de acesso e gestão de consumo.
 - Posto Tulio (São José dos Pinhais, PR): loja de conveniência com controle de acesso e gestão de consumo em 7 unidades, incluindo o Clube do Caminhoneiro.
+- Rede SIM (RS, SC e PR): lojas de conveniência em 18 unidades, com projeto completo: catracas expedidoras, comandas eletrônicas e totens de autopagamento.
 - Outros clientes: Hot Dog Expresso (PR, totens), O Prensadão (PR, totens), Panificadora Divipan (DF, comandas eletrônicas) e Posto Apolo Araquari (RS, catraca expedidora).
 
 ## Programa de parceiros
@@ -112,4 +116,3 @@ Perfil buscado: empresas de software de PDV para food service, revendas de autom
 ## Opcional
 
 - [Política de privacidade](https://nextcard.com.br/politica-de-privacidade)
-- [Termos de uso](https://nextcard.com.br/termos-de-uso)

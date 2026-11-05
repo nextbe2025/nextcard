@@ -48,7 +48,12 @@ const Services = () => {
     <section className="bg-background-3 dark:bg-background-7 relative isolate py-[100px]">
       <BackgroundLines variant="grid" />
       <div className="mx-5 max-w-full space-y-14 min-[425px]:max-w-[380px] min-[475px]:max-w-[450px] sm:mx-auto sm:max-w-[600px] md:max-w-[700px] lg:max-w-[980px] xl:max-w-[1240px] 2xl:max-w-[1440px]">
-        <div className="bg-secondary relative overflow-hidden rounded-4xl bg-[url('/images/backgrounds/fundo-preto-vermelho-luzes-diagonais.webp')] bg-cover bg-center px-2 py-8 min-[425px]:py-[60px] sm:px-0 lg:py-[100px]">
+        <div
+          className="bg-secondary relative overflow-hidden rounded-4xl px-2 py-8 min-[425px]:py-[60px] sm:px-0 lg:py-[100px]"
+          style={{
+            background:
+              'radial-gradient(circle at 0% 0%, rgba(200,33,39,0.5) 0%, rgba(200,33,39,0) 38%), radial-gradient(circle at 100% 100%, rgba(200,33,39,0.5) 0%, rgba(200,33,39,0) 38%), linear-gradient(135deg, #3f3f3c 0%, #23231f 55%, #3a3a37 100%)',
+          }}>
           <div className="mb-[70px] space-y-5 text-center">
             <RevealAnimation delay={0.1}>
               <span className="badge badge-blur border border-white/20 backdrop-blur-md">

@@ -1,12 +1,10 @@
 import AboutBanner from '@/components/about/AboutBanner';
-import AboutGallery from '@/components/about/AboutGallery';
 import CTA from '@/components/about/CTA';
 import FinanceIntro from '@/components/about/FinanceIntro';
 import OurMission from '@/components/about/OurMission';
 import OurSuccess from '@/components/about/OurSuccess';
 import TrustedByUsers from '@/components/about/TrustedByUsers';
 import VisionStatement from '@/components/about/VisionStatement';
-import WhyChooseUs from '@/components/about/WhyChooseUs';
 import { defaultMetadata } from '@/utils/generateMetaData';
 import { Metadata } from 'next';
 
@@ -25,9 +23,7 @@ const page = () => {
       <OurMission />
       <TrustedByUsers />
       <FinanceIntro />
-      <AboutGallery />
       <OurSuccess />
-      <WhyChooseUs />
       <CTA />
     </main>
   );

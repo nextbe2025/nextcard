@@ -58,11 +58,9 @@ const FinanceIntro = () => {
           </RevealAnimation>
           <RevealAnimation delay={0.3}>
             <p className="mb-6">
-              Nossa história começou em 2018, em Pinhais, região metropolitana de Curitiba, com a vontade de tornar
-              diferente o segmento de Automação Comercial — transformando as dores dos clientes em soluções completas
-              e inovadoras, através de um bom relacionamento e boas risadas. Com o tempo, expandimos nossa equipe e
-              conquistamos, dia após dia, a confiança de quem opera com a gente. Hoje, levamos essas soluções a todas as
-              regiões do Brasil.
+              Nossa história começou em 2018, em Pinhais, região metropolitana de Curitiba, transformando as dores dos
+              clientes em soluções completas de Automação Comercial. Hoje, levamos essas soluções a todas as regiões do
+              Brasil.
             </p>
           </RevealAnimation>
           <ul className="mb-10 space-y-3 md:mb-14 md:space-y-4">

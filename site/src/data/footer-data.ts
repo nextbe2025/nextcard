@@ -5,7 +5,7 @@ export const footerLinks: FooterData[] = [
   {
     title: 'Soluções',
     links: [
-      { label: 'Totens', href: '/totem-autoatendimento' },
+      { label: 'Totem de Autoatendimento e Autopagamento', href: '/totem-autoatendimento' },
       { label: 'Catraca Expedidora e Receptora', href: '/catracas' },
       { label: 'Comandas Eletrônicas', href: '/comandas-eletronicas' },
     ],
@@ -17,7 +17,6 @@ export const footerLinks: FooterData[] = [
       { label: 'Projetos', href: '/projetos' },
       { label: 'Seja um Parceiro', href: '/parceiros-revenda' },
       { label: 'Política de Privacidade', href: '/politica-de-privacidade' },
-      { label: 'Termos de Uso', href: '/termos-de-uso' },
     ],
   },
   {
