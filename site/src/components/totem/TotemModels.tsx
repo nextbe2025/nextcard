@@ -1,9 +1,9 @@
 import bgImg from '@public/images/backgrounds/fundo-preto-vermelho-luzes-diagonais.webp';
-import bancadaSlimImg from '@public/images/produtos/totem-autoatendimento-bancada-nextcard.webp';
-import paredeImg from '@public/images/produtos/totem-autoatendimento-parede-nextcard.webp';
+import bancadaSlimImg from '@public/images/produtos/totem-nx-bancada-autoatendimento.webp';
+import paredeImg from '@public/images/produtos/totem-parede-autoatendimento-nextcard.webp';
 import horizontalImg from '@public/images/produtos/totem-nx-18-5-h-autopagamento.webp';
-import pedestalImg from '@public/images/produtos/totem-nx-24-v-autoatendimento-pedestal.webp';
-import bancadaImg from '@public/images/produtos/totem-nx-bancada-autoatendimento.webp';
+import pedestalImg from '@public/images/produtos/totem-pedestal-autoatendimento-nextcard.webp';
+import bancadaImg from '@public/images/produtos/totem-bancada-autoatendimento-impressora-nextcard.webp';
 import Image, { StaticImageData } from 'next/image';
 import { ComponentType } from 'react';
 import RevealAnimation from '../animation/RevealAnimation';

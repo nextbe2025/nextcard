@@ -1,159 +1,105 @@
-import privacy from '@public/images/ns-img-391.png';
-import Image from 'next/image';
-import Link from 'next/link';
+import { ReactNode } from 'react';
 import RevealAnimation from '../animation/RevealAnimation';
 
-interface PrivacySection {
+type PolicySection = {
   title: string;
-  content: string;
-}
-
-interface ListSection {
-  title: string;
-  description?: string;
-  items: ListItem[];
-}
-
-interface ListItem {
-  title?: string;
-  content: string;
-  link?: {
-    url: string;
-    text: string;
-  };
-}
-
-interface FormField {
-  id: string;
-  name: string;
-  label: string;
-  placeholder: string;
-  type: string;
-}
-
-const personalInfoSection: PrivacySection = {
-  title: 'Personal information we collect',
-  content:
-    'When you visit the Site, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and cookies installed on your device. Additionally, as you browse the Site, we collect information about the individual pages you view, what websites or search terms referred you to the Site, and how you interact with the Site. We call this automatically-collected information <span class="text-secondary dark:text-accent">"Device Information."</span>',
+  paragraphs?: ReactNode[];
+  items?: ReactNode[];
 };
 
-const deviceInfoItems: ListItem[] = [
+const sections: PolicySection[] = [
   {
-    title: 'Cookies',
-    content:
-      'Data files placed on your device, often including an anonymous unique identifier. ( Learn more about cookies and how to disable them: <a href="http://www.allaboutcookies.org" class="text-secondary">http://www.allaboutcookies.org</a> )',
+    title: '1. Quem somos',
+    paragraphs: [
+      <>
+        A <strong>NEXTCARD</strong> Automação Comercial, com sede em Pinhais, PR, é a responsável (controladora) pelos
+        dados pessoais tratados por meio deste site. Esta Política explica, de acordo com a Lei Geral de Proteção de
+        Dados (Lei nº 13.709/2018 – LGPD), quais dados coletamos, para que os usamos e quais são os seus direitos.
+      </>,
+    ],
   },
   {
-    title: 'Log Files',
-    content:
-      'Track actions on the Site and collect IP address, browser type, ISP, referring/exit pages, and timestamps.',
+    title: '2. Quais dados coletamos',
+    paragraphs: ['Coletamos apenas os dados que você nos envia e os necessários para o funcionamento do site:'],
+    items: [
+      'Dados de contato informados nos formulários: nome, e-mail, telefone/WhatsApp, estado e cidade.',
+      'Informações sobre o seu negócio: segmento, quantidade de unidades, caixas ou equipamentos, sistema de gestão/PDV utilizado, prazo de implantação e a mensagem que você escrever.',
+      'No formulário de parceiros: razão social, CNPJ, modalidade de interesse e o que você busca com a parceria.',
+      'Dados técnicos do envio: página de origem, endereço de referência (referrer), parâmetros de campanha (UTM), data e hora.',
+      'Endereço IP, usado apenas para a verificação de segurança contra robôs e para limitar envios repetidos.',
+    ],
   },
   {
-    title: 'Web Beacons, Tags, and Pixels',
-    content: 'Electronic files to monitor site usage and interaction.',
+    title: '3. Para que usamos os dados',
+    items: [
+      'Responder ao seu contato e preparar uma cotação ou proposta para a sua operação.',
+      'Avaliar e dar andamento a solicitações do programa de parceiros.',
+      'Entender de quais páginas e campanhas chegam os contatos, para melhorar o site e a comunicação.',
+      'Proteger o site contra spam, robôs e uso indevido.',
+    ],
+    paragraphs: [
+      'Tratamos esses dados com base no seu consentimento, informado no envio do formulário, e no legítimo interesse da NEXTCARD em responder às solicitações e manter o site seguro.',
+    ],
   },
   {
-    title: 'Google Analytics and Pixels',
-    content: 'Collect traffic-related information and interaction behavior.',
-  },
-];
-
-const orderInfoText =
-  'When you make or attempt to purchase through the Site, we collect information such as your name, email address, billing address, shipping address, payment details, and any other relevant data necessary to process your order.';
-
-const formFields: FormField[] = [
-  {
-    id: 'name',
-    name: 'name',
-    label: 'Your name',
-    placeholder: 'Enter your name',
-    type: 'text',
+    title: '4. Compartilhamento',
+    paragraphs: [
+      'Não vendemos nem alugamos os seus dados. Eles podem ser compartilhados apenas com fornecedores que nos ajudam a operar o site e o atendimento, sempre para as finalidades descritas aqui:',
+    ],
+    items: [
+      'Serviços de hospedagem do site e de gestão de contatos, que recebem os dados enviados pelos formulários.',
+      'Cloudflare Turnstile, serviço de verificação contra robôs usado nos formulários.',
+      'YouTube (Google), que exibe o vídeo da página inicial e pode registrar dados de navegação conforme a política própria do Google.',
+      'Autoridades públicas, quando houver obrigação legal ou ordem judicial.',
+    ],
   },
   {
-    id: 'billing-shipping-addresses',
-    name: 'billing-shipping-addresses',
-    label: 'Billing and shipping addresses',
-    placeholder: 'Billing and shipping addresses',
-    type: 'text',
+    title: '5. Cookies e tecnologias semelhantes',
+    paragraphs: [
+      'O site pode usar cookies e tecnologias semelhantes para funcionar corretamente, medir o acesso às páginas e entender a interação com os botões de contato. Conteúdos de terceiros, como o vídeo do YouTube, podem gravar cookies próprios. Você pode bloquear ou apagar cookies nas configurações do seu navegador, mas algumas funções do site podem deixar de funcionar.',
+    ],
   },
   {
-    id: 'payment-information',
-    name: 'payment-information',
-    label: 'Payment information',
-    placeholder: 'credit card, PayPal, or bank details',
-    type: 'text',
+    title: '6. Por quanto tempo guardamos',
+    paragraphs: [
+      'Mantemos os dados pelo tempo necessário para atender à sua solicitação e manter o relacionamento comercial, ou pelo prazo exigido por lei. Depois disso, eles são excluídos ou anonimizados.',
+    ],
   },
   {
-    id: 'email',
-    name: 'email',
-    label: 'Email address',
-    placeholder: 'Enter your email address',
-    type: 'email',
-  },
-];
-
-const useInfoSection: ListSection = {
-  title: 'How we use your personal information',
-  description: 'We use the collected Order Information to:',
-  items: [
-    { content: 'Process your orders, payments, and generate invoices' },
-    { content: 'Communicate with you' },
-    { content: 'Screen for potential fraud or risks' },
-    {
-      content: 'Provide you with information or promotions related to our services, when aligned with your preferences',
-    },
-  ],
-};
-
-const deviceInfoUsage: ListItem[] = [
-  { content: 'Improve and optimize the Site experience' },
-  { content: 'Analyze customer interactions for performance tracking' },
-  { content: 'Screen for potential risk and fraud' },
-];
-
-const sharingInfoSection: ListSection = {
-  title: 'Sharing your personal information',
-  description:
-    'We share your Personal Information with trusted third-party service providers to help us operate effectively:',
-  items: [
-    {
-      content:
-        'Google Analytics: To understand customer interactions and optimize experience (Learn more: <a href="#" class="text-secondary dark:text-accent">Google Privacy Policy</a>)',
-    },
-    { content: 'Payment processors (PayPal, Stripe)' },
-  ],
-};
-
-const rightsSection: ListSection = {
-  title: 'Your rights',
-  description: 'If you are a resident of the European Economic Area (EEA):',
-  items: [
-    { content: 'You have the right to access, update, or delete your personal information.' },
-    {
-      content:
-        'If you wish to exercise these rights, please contact us at <a href="mailto:support@nextsaas.com" class="text-secondary dark:text-accent">support@nextsaas.com</a>',
-    },
-  ],
-};
-
-const simpleSections: PrivacySection[] = [
-  {
-    title: 'Do not track',
-    content:
-      'Please note, we do not alter our Site\'s data collection practices when we detect a "Do Not Track" signal from your browser.',
+    title: '7. Segurança',
+    paragraphs: [
+      'Adotamos medidas técnicas e administrativas para proteger os seus dados, como conexão criptografada (HTTPS), verificação contra robôs e acesso restrito às informações recebidas.',
+    ],
   },
   {
-    title: 'Data retention',
-    content: 'We will retain your Order Information for our records unless you ask us to delete this information.',
+    title: '8. Seus direitos',
+    paragraphs: ['Pela LGPD, você pode, a qualquer momento:'],
+    items: [
+      'Confirmar se tratamos os seus dados e ter acesso a eles.',
+      'Corrigir dados incompletos, inexatos ou desatualizados.',
+      'Pedir a anonimização, o bloqueio ou a exclusão de dados desnecessários.',
+      'Revogar o seu consentimento e pedir a exclusão dos dados tratados com base nele.',
+      'Pedir informações sobre com quem compartilhamos os seus dados.',
+      'Solicitar a portabilidade dos dados a outro fornecedor.',
+    ],
   },
   {
-    title: 'Minors',
-    content: 'Our Site is not intended for individuals under the age of 18.',
+    title: '9. Contato',
+    paragraphs: [
+      <>
+        Para exercer os seus direitos ou tirar dúvidas sobre esta Política, fale com a gente pelo e-mail{' '}
+        <a href="mailto:comercial@nextcard.com.br" className="text-primary-500 underline">
+          comercial@nextcard.com.br
+        </a>{' '}
+        ou pelo telefone (41) 3732-0275.
+      </>,
+    ],
   },
   {
-    title: 'Changes',
-    content:
-      'We may update this Privacy Policy periodically to reflect changes to our practices or for other operational, legal, or regulatory reasons.',
+    title: '10. Atualizações desta Política',
+    paragraphs: [
+      'Esta Política pode ser atualizada para refletir mudanças no site ou na legislação. A versão em vigor é sempre a publicada nesta página.',
+    ],
   },
 ];
 
@@ -161,174 +107,27 @@ const PoliticaPrivacidadeContent = () => {
   return (
     <section className="pt-32 pb-[100px] sm:pt-36 md:pt-42 xl:pt-[180px]">
       <div className="main-container">
-        <div className="privacy-policy space-y-[75px]">
-          {/* Header Section */}
-          <div className="space-y-2">
+        <div className="privacy-policy mx-auto max-w-[860px] space-y-12">
+          <div className="space-y-3">
             <RevealAnimation delay={0.1}>
-              <h2>Data protection guidelines</h2>
+              <h1 className="text-heading-4 md:text-heading-3">Política de Privacidade</h1>
             </RevealAnimation>
             <RevealAnimation delay={0.2}>
-              <p>
-                <span className="text-secondary dark:text-accent">NextSaaS</span> is a product operated by
-                <span className="text-secondary dark:text-accent">NextSaaS Technologies LLC</span>. We specialize in
-                property management solutions, empowering businesses worldwide to streamline their operations
-                efficiently. We are committed to protecting your privacy and handling your information transparently.
-              </p>
+              <p>Última atualização: novembro de 2026.</p>
             </RevealAnimation>
           </div>
-
-          {/* Policy Intro */}
-          <RevealAnimation delay={0.3}>
-            <div className="space-y-2">
-              <h4>NextSaaS privacy policy</h4>
-              <p>
-                This Privacy Policy describes how your personal information is collected, used, and shared when you
-                visit, subscribe, register, or make a purchase from
-                <Link href="https://nextsaas.com" className="text-secondary dark:text-accent">
-                  https://nextsaas.com
-                </Link>
-                (the &quot;Site&quot;).
-              </p>
-            </div>
-          </RevealAnimation>
-          {/* Personal Information Collection */}
-          <div className="space-y-6">
-            <RevealAnimation delay={0.4}>
-              <div className="space-y-2">
-                <h4>{personalInfoSection.title}</h4>
-                <p dangerouslySetInnerHTML={{ __html: personalInfoSection.content }} />
-              </div>
-            </RevealAnimation>
-            <RevealAnimation delay={0.5}>
-              <ul className="text-tagline-1 text-secondary/60 dark:text-accent/60 list-inside space-y-3 font-normal">
-                {deviceInfoItems.map((item, index) => (
-                  <li key={index + 1}>
-                    <strong className="text-secondary dark:text-accent font-normal">{item.title} – </strong>
-                    <span dangerouslySetInnerHTML={{ __html: item.content }} />
-                  </li>
-                ))}
-              </ul>
-            </RevealAnimation>
-          </div>
-          {/* Order Information Section with Form */}
-          <div>
-            <div className="grid grid-cols-12 gap-y-[100px] lg:gap-[100px]">
-              <div className="col-span-12 lg:col-span-6">
-                <RevealAnimation delay={0.6}>
-                  <div className="mb-[70px] text-left">
-                    <p className="max-w-[550px]">{orderInfoText}</p>
-                  </div>
-                </RevealAnimation>
-                <RevealAnimation delay={0.7}>
-                  <figure className="w-full max-w-[595px] self-end overflow-hidden rounded-[20px]">
-                    <Image src={privacy} className="size-full object-cover" alt="support-contact" />
-                  </figure>
-                </RevealAnimation>
-              </div>
-              <RevealAnimation delay={0.8}>
-                <div className="col-span-12 lg:col-span-6">
-                  <form className="dark:bg-background-8 rounded-[20px] bg-white p-6 lg:p-[42px]">
-                    {formFields.map((field, index) => (
-                      <fieldset key={field.id} className={`space-y-2 ${index < formFields.length - 1 ? 'mb-8' : ''}`}>
-                        <label
-                          htmlFor={field.id}
-                          className="text-tagline-1 text-secondary dark:text-accent block font-medium">
-                          {field.label}
-                        </label>
-                        <input
-                          type={field.type}
-                          name={field.name}
-                          id={field.id}
-                          placeholder={field.placeholder}
-                          className="dark:text-accent dark:bg-background-6 border-stroke-3 dark:border-stroke-7 bg-background-1 focus-visible:outline-primary-500 placeholder:text-tagline-1 placeholder:text-secondary/60 dark:placeholder:text-accent/60 shadow-1 block h-12 w-full rounded-full border px-[18px] py-3 font-normal placeholder:font-normal focus-visible:outline"
-                        />
-                      </fieldset>
+          {sections.map((section) => (
+            <RevealAnimation key={section.title} delay={0.1}>
+              <div className="space-y-3">
+                <h3 className="text-heading-6 md:text-heading-5">{section.title}</h3>
+                {section.paragraphs?.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                {section.items && (
+                  <ul className="text-tagline-1 text-secondary/60 dark:text-accent/60 space-y-2">
+                    {section.items.map((item, index) => (
+                      <li key={index}>{item}</li>
                     ))}
-                    <fieldset className="mt-4 mb-4 flex items-center gap-2">
-                      <label htmlFor="agree-terms" className="flex items-center gap-x-3">
-                        <input id="agree-terms" type="checkbox" className="peer sr-only" required />
-                        <span className="border-stroke-3 dark:border-stroke-7 after:bg-primary-500 peer-checked:border-primary-500 relative size-4 cursor-pointer rounded-full border after:absolute after:top-1/2 after:left-1/2 after:size-2.5 after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:opacity-0 peer-checked:after:opacity-100" />
-                      </label>
-                      <label
-                        htmlFor="agree-terms"
-                        className="text-tagline-3 text-secondary/60 dark:text-accent/60 cursor-pointer">
-                        I agree with the terms and conditions
-                      </label>
-                    </fieldset>
-                    <button
-                      type="submit"
-                      className="btn dark:btn-accent btn-md btn-secondary hover:btn-primary w-full first-letter:uppercase before:content-none">
-                      Submit
-                    </button>
-                  </form>
-                </div>
-              </RevealAnimation>
-            </div>
-          </div>
-          {/* How We Use Information */}
-          <RevealAnimation delay={0.5}>
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h4>{useInfoSection.title}</h4>
-                <p>{useInfoSection.description}</p>
-              </div>
-              <ul className="text-tagline-1 text-secondary/60 dark:text-accent/60 list-inside space-y-3 font-normal">
-                {useInfoSection.items.map((item, index) => (
-                  <li key={index + 1}>{item.content}</li>
-                ))}
-              </ul>
-              <div>
-                <p className="text-secondary dark:text-accent">We use the collected Device Information to:</p>
-                <ul className="text-tagline-1 text-secondary/60 dark:text-accent/60 list-inside space-y-3 font-normal">
-                  {deviceInfoUsage.map((item, index) => (
-                    <li key={index + 1}>{item.content}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </RevealAnimation>
-
-          {/* Sharing Information */}
-          <RevealAnimation delay={0.6}>
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h4>Sharing your personal information</h4>
-                <p>
-                  We share your Personal Information with trusted third-party service providers to help us operate
-                  effectively:
-                </p>
-              </div>
-              <ul className="text-tagline-1 text-secondary/60 dark:text-accent/60 list-inside space-y-3 font-normal">
-                {sharingInfoSection.items.map((item, index) => (
-                  <li key={index + 1} dangerouslySetInnerHTML={{ __html: item.content }} />
-                ))}
-              </ul>
-            </div>
-          </RevealAnimation>
-
-          {/* Your Rights */}
-          <RevealAnimation delay={0.8}>
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h4>{rightsSection.title}</h4>
-                <p>{rightsSection.description}</p>
-              </div>
-              <ul className="text-tagline-1 text-secondary/60 dark:text-accent/60 list-inside space-y-3 font-normal">
-                {rightsSection.items.map((item, index) => (
-                  <li key={index + 1} dangerouslySetInnerHTML={{ __html: item.content }} />
-                ))}
-              </ul>
-            </div>
-          </RevealAnimation>
-
-          {/* Simple Sections */}
-          {simpleSections.map((section, index) => (
-            <RevealAnimation key={section.title} delay={0.7 + index * 0.1}>
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <h4>{section.title}</h4>
-                  <p dangerouslySetInnerHTML={{ __html: section.content }} />
-                </div>
+                  </ul>
+                )}
               </div>
             </RevealAnimation>
           ))}

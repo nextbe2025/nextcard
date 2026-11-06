@@ -1,6 +1,9 @@
 import c120 from '@public/images/produtos/catraca-expedidora-tecnibra-c120-entrada.webp';
 import c180Exp from '@public/images/produtos/catraca-expedidora-tecnibra-c180-economy.webp';
 import c180Rec from '@public/images/produtos/catraca-receptora-tecnibra-c180-economy-saida.webp';
+import fitTopdata from '@public/images/produtos/catraca-expedidora-fit-topdata-entrada.webp';
+import r120 from '@public/images/produtos/catraca-receptora-tecnibra-r120-saida.webp';
+import fitUrna from '@public/images/produtos/catraca-receptora-fit-urna-topdata-saida.webp';
 import Image, { StaticImageData } from 'next/image';
 import { ReactNode } from 'react';
 import RevealAnimation from '../animation/RevealAnimation';
@@ -55,6 +58,8 @@ const groups: Group[] = [
       {
         name: 'Expedidora Fit Topdata',
         text: 'Adaptável a diversos ambientes.',
+        image: fitTopdata,
+        alt: 'Catraca expedidora Fit Topdata com dispensador de cartões',
         specs: [
           { label: 'Dimensões', value: '690 × 1133 × 820 mm' },
           { label: 'Cartões', value: '54 × 86 mm' },
@@ -71,6 +76,8 @@ const groups: Group[] = [
       {
         name: 'Tecnibra R120',
         text: 'Prática, robusta e confiável.',
+        image: r120,
+        alt: 'Catraca receptora de comandas Tecnibra R120',
         specs: [
           { label: 'Dimensões', value: '252,89 × 1746,92 × 1034,7 mm' },
           { label: 'Comandas', value: '9 × 7 cm (5 mm ou 3,5 mm)' },
@@ -90,6 +97,8 @@ const groups: Group[] = [
       {
         name: 'Catraca Fit Urna Topdata',
         text: 'Discreta e adaptável a diversos ambientes.',
+        image: fitUrna,
+        alt: 'Catraca receptora Fit Topdata com urna para recolher cartões',
         specs: [
           { label: 'Dimensões', value: '690 × 1050 × 810 mm' },
           { label: 'Cartões', value: '54 × 86 mm' },

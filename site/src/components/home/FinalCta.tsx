@@ -7,7 +7,12 @@ const FinalCta = () => {
   return (
     <section className="relative overflow-x-clip py-[50px] md:py-20 lg:py-28" aria-label="Chamada final para cotação">
       <div className="main-container relative">
-        <div className="bg-secondary relative space-y-6 overflow-hidden rounded-4xl bg-[url('/images/backgrounds/fundo-concreto-escuro-neon-vermelho.webp')] bg-cover bg-center px-6 py-16 text-center md:px-10 lg:py-24">
+        <div
+          className="bg-secondary relative space-y-6 overflow-hidden rounded-4xl bg-cover bg-center px-6 py-16 text-center md:px-10 lg:py-24"
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, rgba(35,35,31,0.78) 0%, rgba(35,35,31,0.7) 55%, rgba(200,33,39,0.45) 100%), url('/images/ambientes/atendimento-restaurante-garcom-servindo-cliente.webp')",
+          }}>
           <RevealAnimation delay={0.1}>
             <h2 className="mx-auto max-w-[620px] text-white">Vamos transformar sua operação?</h2>
           </RevealAnimation>

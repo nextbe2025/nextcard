@@ -1,4 +1,4 @@
-import totemImg from '@public/images/ambientes/totem-autoatendimento-pedestal-restaurante.webp';
+import totemImg from '@public/images/ambientes/totens-autoatendimento-hot-dog-expresso-nextcard.webp';
 import Image from 'next/image';
 import { ComponentType } from 'react';
 import RevealAnimation from '../animation/RevealAnimation';
@@ -23,10 +23,10 @@ const FinanceIntro = () => {
             <figure className="group relative aspect-[4/5] overflow-hidden rounded-[20px]">
               <Image
                 src={totemImg}
-                alt="Totem de autoatendimento NEXTCARD em restaurante"
+                alt="Totens de autoatendimento NEXTCARD personalizados no Hot Dog Expresso"
                 fill
-                sizes="(min-width: 1024px) 520px, 100vw"
-                className="object-cover object-[72%_center] transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(min-width: 1024px) 1000px, 160vw"
+                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </figure>
           </RevealAnimation>
