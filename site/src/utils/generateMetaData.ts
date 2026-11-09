@@ -12,6 +12,7 @@ const defaultMetadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   openGraph: {
     type: 'website',
+    locale: 'pt_BR',
     siteName: 'NEXTCARD',
     url: DEFAULT_URL,
     title: DEFAULT_TITLE,
