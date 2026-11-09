@@ -25,24 +25,6 @@ export interface IBlogContent {
   matter: string;
 }
 
-export interface ICaseStudy {
-  title: string;
-  thumbnail: string;
-  description: string;
-  result: string;
-  slug: string;
-  content: string;
-  before: string[];
-  after: string[];
-  keyFeatures: string[];
-  userReview: {
-    userName: string;
-    userImage: string;
-    userRole: string;
-    reviewText: string;
-  };
-}
-
 export interface IPosition {
   datePosted: string;
   expirationDate: string;
