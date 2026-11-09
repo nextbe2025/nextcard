@@ -1,6 +1,4 @@
-import bgImg from '@public/images/backgrounds/fundo-concreto-escuro-neon-vermelho.webp';
 import { LeadField } from '@/data/lead-forms';
-import Image from 'next/image';
 import { ReactNode } from 'react';
 import RevealAnimation from '../animation/RevealAnimation';
 import BackgroundLines from './BackgroundLines';
@@ -34,9 +32,12 @@ const LeadSection = ({
     <section id="cotacao" className="relative isolate scroll-mt-24 py-14 md:py-16 lg:py-[88px] xl:py-[100px]">
       <BackgroundLines variant="grid" />
       <div className="main-container">
-        <div className="bg-secondary relative isolate overflow-hidden rounded-[28px] px-5 py-10 sm:px-8 md:px-12 lg:py-14">
-          <Image src={bgImg} alt="" aria-hidden fill sizes="1240px" className="-z-10 object-cover opacity-70" />
-          <div aria-hidden className="absolute inset-0 -z-10 bg-black/40" />
+        <div
+          className="bg-secondary relative isolate overflow-hidden rounded-[28px] px-5 py-10 sm:px-8 md:px-12 lg:py-14"
+          style={{
+            background:
+              'radial-gradient(circle at 0% 0%, rgba(200,33,39,0.5) 0%, rgba(200,33,39,0) 38%), radial-gradient(circle at 100% 100%, rgba(200,33,39,0.5) 0%, rgba(200,33,39,0) 38%), linear-gradient(135deg, #3f3f3c 0%, #23231f 55%, #3a3a37 100%)',
+          }}>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-x-14">
             <div className="space-y-6 text-white lg:col-span-5 lg:flex lg:flex-col lg:items-start lg:justify-center">
               <RevealAnimation delay={0.1}>

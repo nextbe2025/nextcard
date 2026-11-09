@@ -19,7 +19,7 @@ const steps: Step[] = [
     description: 'Catraca Expedidora libera o acesso e entrega a comanda ao cliente.',
     short: 'Catraca libera o acesso',
     icon: TurnstileIcon,
-    pin: { x: 20, y: 42 },
+    pin: { x: 27, y: 42 },
   },
   {
     label: 'Comanda e Consumo',
@@ -27,21 +27,21 @@ const steps: Step[] = [
       'O cliente circula livremente pela operação — mesas, quiosques, áreas de convivência — enquanto cada consumo é registrado na comanda eletrônica, sem papel e sem erro manual.',
     short: 'Consumo sem papel',
     icon: TicketIcon,
-    pin: { x: 51, y: 34 },
+    pin: { x: 54, y: 34 },
   },
   {
     label: 'Totem',
     description: 'No totem, o cliente confere o consumo e faz o pagamento no seu próprio ritmo.',
     short: 'Autoatendimento e pagamento no seu ritmo',
     icon: KioskIcon,
-    pin: { x: 71, y: 36 },
+    pin: { x: 75, y: 63 },
   },
   {
     label: 'Saída',
     description: 'Catraca Receptora confirma o pagamento e libera a saída, fechando o ciclo.',
     short: 'Catraca libera a saída',
     icon: TurnstileIcon,
-    pin: { x: 88, y: 46 },
+    pin: { x: 86, y: 46 },
   },
 ];
 
@@ -88,12 +88,15 @@ const Ecosystem = () => {
                 alt="Fluxo NEXTCARD em um restaurante: entrada com catraca expedidora, comanda, totem de autoatendimento e saída com catraca receptora"
                 fill
                 sizes="(min-width: 1280px) 1240px, 100vw"
-                className="object-cover saturate-[.8] transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
               />
               <div
                 aria-hidden
                 className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
               />
+              <figcaption className="text-tagline-3 absolute right-3 bottom-3 rounded-full bg-black/45 px-3 py-1 text-white/90 backdrop-blur-sm sm:right-4 sm:bottom-4">
+                Imagem ilustrativa<span className="hidden sm:inline">: ambiente e equipamentos meramente representativos</span>.
+              </figcaption>
             </figure>
           </RevealAnimation>
           <div className="pointer-events-none absolute inset-0">
