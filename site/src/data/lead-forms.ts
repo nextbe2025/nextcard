@@ -101,13 +101,6 @@ export const totemFormFields: LeadField[] = [
 
 export const catracaFormFields: LeadField[] = [
   ...contactFields,
-  {
-    name: 'tipo',
-    label: 'Qual catraca você precisa?',
-    type: 'select',
-    options: ['Catraca Expedidora', 'Catraca Receptora', 'As duas (expedidora e receptora)', 'Ainda não sei'],
-    full: true,
-  },
   { name: 'unidades', label: 'Quantidade de unidades', type: 'number', placeholder: 'Ex.: 3' },
   { name: 'catracas', label: 'Quantidade de catracas', type: 'number', placeholder: 'Ex.: 2' },
   { name: 'pdv', label: 'Sistema de gestão / PDV', type: 'text', placeholder: 'Qual sistema você usa hoje?' },
