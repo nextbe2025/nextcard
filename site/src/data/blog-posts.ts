@@ -23,8 +23,7 @@ export type BlogPost = {
   category: BlogCategory;
   cover: StaticImageData;
   coverAlt: string;
-  // Articles without a body still point to the published article on the current site until they are migrated.
-  body?: BlogBlock[];
+  body: BlogBlock[];
   // Solution page the article leads to at the end
   solution?: { label: string; href: string };
 };
@@ -118,113 +117,6 @@ const drafts: Draft[] = [
       },
     ],
   },
-  {
-    slug: 'o-futuro-do-setor-de-alimentacao-a-tendencia-do-autoatendimento-em-2024',
-    title: 'O futuro do setor de alimentação: a tendência do autoatendimento',
-    excerpt:
-      'A gastronomia passa por uma transformação impulsionada pela tecnologia, e o autoatendimento está no centro dela.',
-    category: 'Totens',
-  },
-  {
-    slug: 'totem-de-autoatendimento-como-escolher-o-melhor-para-o-meu-restaurante-e-aumentar-o-faturamento',
-    title: 'Totem de autoatendimento: como escolher o melhor para o meu restaurante?',
-    excerpt: 'Na era da automação comercial, veja o que avaliar para escolher o totem certo e aumentar o faturamento.',
-    category: 'Totens',
-  },
-  {
-    slug: 'totem-de-autoatendimento-sera-que-meu-estabelecimento-precisa-de-um',
-    title: 'Totem de autoatendimento: será que meu estabelecimento precisa de um?',
-    excerpt: 'O investimento em tecnologia é sempre uma ótima alternativa para prosperar, e o totem é uma delas.',
-    category: 'Totens',
-  },
-  {
-    slug: 'vale-a-pena-investir-em-um-totem-de-autopagamento',
-    title: 'Vale a pena investir em um totem de autopagamento?',
-    excerpt: 'Na busca por praticidade, o totem de autopagamento vem sendo usado em cada vez mais estabelecimentos.',
-    category: 'Totens',
-  },
-  {
-    slug: '5-vantagens-das-comandas-eletronicas-para-o-seu-restaurante',
-    title: '5 vantagens das comandas eletrônicas para o seu restaurante',
-    excerpt:
-      'Os avanços da tecnologia já chegaram à maioria das atividades profissionais, inclusive ao salão do restaurante.',
-    category: 'Comandas',
-  },
-  {
-    slug: 'como-funciona-o-sistema-de-comanda-eletronica',
-    title: 'Como funciona o sistema de comanda eletrônica?',
-    excerpt:
-      'Automatizar processos com tecnologia é sempre uma ideia inteligente para o seu estabelecimento prosperar.',
-    category: 'Comandas',
-  },
-  {
-    slug: 'qual-e-o-controle-de-acesso-ideal-para-minha-empresa',
-    title: 'Qual é o controle de acesso ideal para o meu negócio?',
-    excerpt: 'Ter atenção com o controle de acesso é essencial para garantir a segurança do estabelecimento.',
-    category: 'Controle de acesso',
-  },
-  {
-    slug: 'vale-a-pena-usar-crachas-e-cartoes-de-acesso-na-empresa',
-    title: 'Vale a pena usar crachás e cartões de acesso?',
-    excerpt: 'Muita gente ainda tem dúvidas sobre a importância dos crachás e cartões de acesso.',
-    category: 'Controle de acesso',
-  },
-  {
-    slug: 'potencialize-seu-restaurante-neste-natal-satisfacao-dos-clientes-e-eliminacao-de-filas',
-    title: 'Potencialize seu restaurante no Natal: clientes satisfeitos e sem filas',
-    excerpt:
-      'Com as festividades, restaurantes e bares enchem: veja como manter o atendimento ágil na data mais movimentada.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: 'gestao-de-restaurantes-como-torna-lo-mais-eficiente',
-    title: 'Gestão de restaurantes: como torná-la mais eficiente?',
-    excerpt: 'Formas inovadoras e diferenciadas de promover uma excelente gestão do seu restaurante.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: '6-maneiras-de-automatizar-o-atendimento-ao-cliente-no-restaurante',
-    title: '6 maneiras de automatizar o atendimento ao cliente no restaurante',
-    excerpt: 'A tecnologia no atendimento tem se mostrado uma verdadeira vantagem competitiva no mercado.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: '5-dicas-para-promover-um-bom-atendimento-no-restaurante',
-    title: '5 dicas para promover um bom atendimento no restaurante',
-    excerpt: 'A maneira como o cliente é atendido é um dos fatores que mais pesam na decisão de voltar.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: 'mitos-e-verdades-sobre-o-sistema-de-gestao',
-    title: 'Mitos e verdades sobre o sistema de gestão',
-    excerpt:
-      'Investir em tecnologia é ótimo para turbinar os negócios, mas nem tudo o que se diz sobre gestão é verdade.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: 'software-de-gestao-para-restaurante-o-que-e-e-como-escolher',
-    title: 'Software de gestão para restaurante: o que é e como escolher?',
-    excerpt: 'Bar, cafeteria, restaurante ou padaria: entenda o que avaliar antes de escolher o seu sistema.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: 'como-aumentar-o-ticket-medio-da-minha-empresa',
-    title: 'Como aumentar o ticket médio do meu negócio?',
-    excerpt: 'O ticket médio é o valor que cada cliente gasta, em média, no seu estabelecimento. Veja como aumentá-lo.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: 'a-automacao-comercial-reduz-os-custos-operacionais',
-    title: 'A automação comercial reduz os custos operacionais?',
-    excerpt: 'Entenda como as ferramentas tecnológicas automatizam as tarefas do dia a dia da operação.',
-    category: 'Gestão e automação',
-  },
-  {
-    slug: 'como-a-tecnologia-facilita-o-controle-de-restaurantes-e-padarias',
-    title: 'Como a tecnologia facilita o controle de restaurantes e padarias?',
-    excerpt: 'Um bom planejamento estratégico é importante para se destacar da concorrência e garantir resultados.',
-    category: 'Gestão e automação',
-  },
 ];
 
 export const blogPosts: BlogPost[] = drafts.map((draft, index) => ({
@@ -234,6 +126,3 @@ export const blogPosts: BlogPost[] = drafts.map((draft, index) => ({
 }));
 
 export const getBlogPost = (slug: string) => blogPosts.find((post) => post.slug === slug);
-
-// Old address of each article on the current site, used while an article has no migrated body yet.
-export const legacyPostUrl = (slug: string) => `https://nextcard.com.br/${slug}/`;

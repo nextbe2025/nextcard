@@ -9,11 +9,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-// Only articles with a migrated body get their own page; the others still link to the current site.
-const published = blogPosts.filter((post) => post.body);
-
 export function generateStaticParams() {
-  return published.map((post) => ({ slug: post.slug }));
+  return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -57,7 +54,7 @@ const Block = ({ block }: { block: BlogBlock }) => {
 
 const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const post: BlogPost | undefined = getBlogPost((await params).slug);
-  if (!post?.body) {
+  if (!post) {
     notFound();
   }
   const related = blogPosts.filter((item) => item.category === post.category && item.slug !== post.slug).slice(0, 3);

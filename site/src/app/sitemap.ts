@@ -18,14 +18,11 @@ const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Si
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Only articles migrated to this site have their own page; the others still live at their old address.
-  const articles = blogPosts
-    .filter((post) => post.body)
-    .map((post) => ({
-      url: `${siteUrl}/blog/${post.slug}`,
-      changeFrequency: 'yearly' as const,
-      priority: 0.5,
-    }));
+  const articles = blogPosts.map((post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    changeFrequency: 'yearly' as const,
+    priority: 0.5,
+  }));
 
   return [
     ...pages.map(({ path, priority, changeFrequency }) => ({ url: `${siteUrl}${path}`, changeFrequency, priority })),

@@ -1,5 +1,5 @@
 'use client';
-import { BlogCategory, BlogPost, blogCategories, legacyPostUrl } from '@/data/blog-posts';
+import { BlogCategory, BlogPost, blogCategories } from '@/data/blog-posts';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,19 +11,12 @@ import BackgroundMark from '../shared/BackgroundMark';
 const PAGE_SIZE = 9;
 
 const PostCard = ({ post }: { post: BlogPost }) => {
-  const external = !post.body;
-  const href = external ? legacyPostUrl(post.slug) : `/blog/${post.slug}`;
-  const linkProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+  const href = `/blog/${post.slug}`;
 
   return (
     <div className="h-full">
       <article className="group bg-background-1 dark:bg-background-6 border-secondary/10 hover:border-primary-500/40 flex h-full flex-col overflow-hidden rounded-[24px] border transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_rgba(35,35,31,0.14)]">
-        <Link
-          href={href}
-          {...linkProps}
-          className="relative block aspect-[16/10] overflow-hidden"
-          tabIndex={-1}
-          aria-hidden>
+        <Link href={href} className="relative block aspect-[16/10] overflow-hidden" tabIndex={-1} aria-hidden>
           <Image
             src={post.cover}
             alt=""
@@ -37,14 +30,13 @@ const PostCard = ({ post }: { post: BlogPost }) => {
         </Link>
         <div className="flex flex-1 flex-col gap-3 p-6">
           <h3 className="text-heading-6">
-            <Link href={href} {...linkProps} className="hover:text-primary-500 transition-colors">
+            <Link href={href} className="hover:text-primary-500 transition-colors">
               {post.title}
             </Link>
           </h3>
           <p className="text-tagline-1 line-clamp-3">{post.excerpt}</p>
           <Link
             href={href}
-            {...linkProps}
             className="text-primary-500 text-tagline-1 mt-auto inline-flex items-center gap-2 pt-2 font-medium">
             Ler artigo
             <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
@@ -61,6 +53,7 @@ const BlogList = ({ posts }: { posts: BlogPost[] }) => {
   const [category, setCategory] = useState<BlogCategory | 'Todos'>('Todos');
   const [visible, setVisible] = useState(PAGE_SIZE);
 
+  const categories = blogCategories.filter((item) => posts.some((post) => post.category === item));
   const filtered = category === 'Todos' ? posts : posts.filter((post) => post.category === category);
   const shown = filtered.slice(0, visible);
 
@@ -83,26 +76,28 @@ const BlogList = ({ posts }: { posts: BlogPost[] }) => {
           </RevealAnimation>
         </div>
 
-        <RevealAnimation delay={0.3}>
-          <ul className="flex flex-wrap justify-center gap-3" aria-label="Filtrar por categoria">
-            {(['Todos', ...blogCategories] as const).map((item) => (
-              <li key={item}>
-                <button
-                  type="button"
-                  onClick={() => select(item)}
-                  aria-pressed={category === item}
-                  className={cn(
-                    'text-tagline-2 cursor-pointer rounded-full border px-5 py-2.5 font-medium transition-colors duration-300',
-                    category === item
-                      ? 'bg-primary-500 border-primary-500 text-white'
-                      : 'bg-background-1 border-secondary/10 text-secondary hover:border-primary-500/50 hover:text-primary-500',
-                  )}>
-                  {item}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </RevealAnimation>
+        {categories.length > 1 && (
+          <RevealAnimation delay={0.3}>
+            <ul className="flex flex-wrap justify-center gap-3" aria-label="Filtrar por categoria">
+              {(['Todos', ...categories] as const).map((item) => (
+                <li key={item}>
+                  <button
+                    type="button"
+                    onClick={() => select(item)}
+                    aria-pressed={category === item}
+                    className={cn(
+                      'text-tagline-2 cursor-pointer rounded-full border px-5 py-2.5 font-medium transition-colors duration-300',
+                      category === item
+                        ? 'bg-primary-500 border-primary-500 text-white'
+                        : 'bg-background-1 border-secondary/10 text-secondary hover:border-primary-500/50 hover:text-primary-500',
+                    )}>
+                    {item}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </RevealAnimation>
+        )}
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((post, index) => (
