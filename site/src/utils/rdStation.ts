@@ -16,11 +16,7 @@ export const rdConversionIdentifier = (product: string) =>
  *   without them (then without any custom field), so a lead is never lost because of a field mismatch.
  */
 const textFields: Record<string, string> = {
-  unidades: 'cf_quantas_unidades_possui',
   caixas: 'cf_quantos_caixas_existem_em_cada_unidade',
-  totens: 'cf_quantos_totens_pretende_instalar_inicialmente',
-  catracas: 'cf_quantas_catracas_pretende_instalar',
-  comandas: 'cf_quantas_comandas_voce_precisa',
   pdv: 'cf_voce_ja_utiliza_algum_sistema_pdv_se_sim_qual',
   cnpj: 'cf_cnpj',
   mensagem: 'cf_mensagem',
@@ -33,6 +29,11 @@ const listFields: Record<string, string> = {
   segmento: 'cf_qual_e_o_segmento_do_seu_negocio',
   prazo: 'cf_em_quanto_tempo_pretende_implantar',
   estado: 'cf_estados',
+  unidades: 'cf_quantas_unidades_possui',
+  totens: 'cf_quantos_totens_pretende_instalar_inicialmente',
+  catracas: 'cf_quantas_catracas_pretende_instalar',
+  comandas: 'cf_quantas_comandas_voce_precisa',
+  fluxo: 'cf_qual_o_fluxo_medio_de_clientes_por_dia',
 };
 
 // Exact option lists of the RD selection fields (RD rejects the conversion for any other value).
@@ -61,6 +62,11 @@ export const rdListOptions: Record<string, string[]> = {
   ],
   prazo: ['Imediatamente', 'Nos próximos 30 dias', 'Em até 3 meses', 'Apenas pesquisando'],
   estado: ['PR', 'SC', 'RS', 'SP', 'MG', 'RJ', 'DF', 'GO', 'UF Demais', 'Outros'],
+  unidades: ['1', '2 a 3', '4 a 10', '11 a 30', 'Mais de 30'],
+  catracas: ['1', '2', '3', '4 ou mais', 'Ainda não sei'],
+  totens: ['1', '2', '3 a 5', '6 a 10', 'Mais de 10', 'Ainda não sei'],
+  comandas: ['Até 100', 'De 101 a 300', 'De 301 a 500', 'De 501 a 1.000', 'Mais de 1.000', 'Ainda não sei'],
+  fluxo: ['Até 100', '100 a 300', '300 a 600', '600 a 1.000', 'Mais de 1.000'],
 };
 
 const brazilianStates = new Set([
@@ -100,6 +106,11 @@ const matchOption = (options: string[], value: string) =>
 export const toRdListValue: Record<string, (value: string) => string | undefined> = {
   segmento: (value) => matchOption(rdListOptions.segmento, value) ?? 'Outros',
   prazo: (value) => matchOption(rdListOptions.prazo, value),
+  unidades: (value) => matchOption(rdListOptions.unidades, value),
+  catracas: (value) => matchOption(rdListOptions.catracas, value),
+  totens: (value) => matchOption(rdListOptions.totens, value),
+  comandas: (value) => matchOption(rdListOptions.comandas, value),
+  fluxo: (value) => matchOption(rdListOptions.fluxo, value),
   estado: (value) => {
     const uf = value.trim().toUpperCase();
     if (rdListOptions.estado.includes(uf)) {

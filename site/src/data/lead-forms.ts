@@ -68,6 +68,20 @@ export const foodSegments = [
 // Same options as the RD Station field "Em quanto tempo pretende implantar?" (cf_em_quanto_tempo_pretende_implantar).
 export const deadlines = ['Imediatamente', 'Nos próximos 30 dias', 'Em até 3 meses', 'Apenas pesquisando'];
 
+// Same options as the matching RD Station selection fields (see src/utils/rdStation.ts).
+export const unitOptions = ['1', '2 a 3', '4 a 10', '11 a 30', 'Mais de 30'];
+export const turnstileOptions = ['1', '2', '3', '4 ou mais', 'Ainda não sei'];
+export const kioskOptions = ['1', '2', '3 a 5', '6 a 10', 'Mais de 10', 'Ainda não sei'];
+export const tabOptions = [
+  'Até 100',
+  'De 101 a 300',
+  'De 301 a 500',
+  'De 501 a 1.000',
+  'Mais de 1.000',
+  'Ainda não sei',
+];
+export const dailyFlowOptions = ['Até 100', '100 a 300', '300 a 600', '600 a 1.000', 'Mais de 1.000'];
+
 const contactFields: LeadField[] = [
   { name: 'nome', label: 'Nome', type: 'text', required: true, autoComplete: 'name', placeholder: 'Seu nome completo' },
   {
@@ -92,25 +106,26 @@ const contactFields: LeadField[] = [
 
 export const totemFormFields: LeadField[] = [
   ...contactFields,
-  { name: 'unidades', label: 'Quantidade de unidades', type: 'number', placeholder: 'Ex.: 3' },
+  { name: 'unidades', label: 'Quantidade de unidades', type: 'select', options: unitOptions },
   { name: 'caixas', label: 'Quantidade de caixas', type: 'number', placeholder: 'Ex.: 2' },
-  { name: 'totens', label: 'Quantidade de totens', type: 'number', placeholder: 'Ex.: 2' },
+  { name: 'totens', label: 'Quantidade de totens', type: 'select', options: kioskOptions },
   { name: 'pdv', label: 'Sistema de gestão / PDV', type: 'text', placeholder: 'Qual sistema você usa hoje?' },
   { name: 'prazo', label: 'Prazo de implantação', type: 'select', options: deadlines, full: true },
 ];
 
 export const catracaFormFields: LeadField[] = [
   ...contactFields,
-  { name: 'unidades', label: 'Quantidade de unidades', type: 'number', placeholder: 'Ex.: 3' },
-  { name: 'catracas', label: 'Quantidade de catracas', type: 'number', placeholder: 'Ex.: 2' },
+  { name: 'unidades', label: 'Quantidade de unidades', type: 'select', options: unitOptions },
+  { name: 'catracas', label: 'Quantidade de catracas', type: 'select', options: turnstileOptions },
+  { name: 'fluxo', label: 'Fluxo médio de clientes por dia', type: 'select', options: dailyFlowOptions },
   { name: 'pdv', label: 'Sistema de gestão / PDV', type: 'text', placeholder: 'Qual sistema você usa hoje?' },
-  { name: 'prazo', label: 'Prazo de implantação', type: 'select', options: deadlines },
+  { name: 'prazo', label: 'Prazo de implantação', type: 'select', options: deadlines, full: true },
 ];
 
 export const comandaFormFields: LeadField[] = [
   ...contactFields,
-  { name: 'unidades', label: 'Quantidade de unidades', type: 'number', placeholder: 'Ex.: 3' },
-  { name: 'comandas', label: 'Quantidade de comandas', type: 'number', placeholder: 'Ex.: 200' },
+  { name: 'unidades', label: 'Quantidade de unidades', type: 'select', options: unitOptions },
+  { name: 'comandas', label: 'Quantidade de comandas', type: 'select', options: tabOptions },
   { name: 'pdv', label: 'Sistema de gestão / PDV', type: 'text', placeholder: 'Qual sistema você usa hoje?' },
   { name: 'prazo', label: 'Prazo de implantação', type: 'select', options: deadlines },
 ];

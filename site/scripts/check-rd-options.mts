@@ -1,12 +1,26 @@
 // Checks that every option the site forms can send maps to a valid RD Station list option.
 // Run: npm run check:rd  (Node 22.6+ for --experimental-strip-types)
-import { deadlines, foodSegments, states } from '../src/data/lead-forms.ts';
+import {
+  dailyFlowOptions,
+  deadlines,
+  foodSegments,
+  kioskOptions,
+  states,
+  tabOptions,
+  turnstileOptions,
+  unitOptions,
+} from '../src/data/lead-forms.ts';
 import { rdListOptions, toRdListValue } from '../src/utils/rdStation.ts';
 
 const cases: [string, string[]][] = [
   ['segmento', foodSegments],
   ['prazo', deadlines],
   ['estado', [...states, '', 'XX']],
+  ['unidades', unitOptions],
+  ['catracas', turnstileOptions],
+  ['totens', kioskOptions],
+  ['comandas', tabOptions],
+  ['fluxo', dailyFlowOptions],
 ];
 
 let failures = 0;
@@ -19,11 +33,19 @@ for (const [field, values] of cases) {
     }
   }
 }
-// The site must offer every deadline RD has, 1:1.
-for (const option of rdListOptions.prazo) {
-  if (!deadlines.includes(option)) {
+// These site selects must offer exactly the RD options, 1:1.
+const oneToOne: [string, string[]][] = [
+  ['prazo', deadlines],
+  ['unidades', unitOptions],
+  ['catracas', turnstileOptions],
+  ['totens', kioskOptions],
+  ['comandas', tabOptions],
+  ['fluxo', dailyFlowOptions],
+];
+for (const [field, siteOptions] of oneToOne) {
+  if (JSON.stringify(siteOptions) !== JSON.stringify(rdListOptions[field])) {
     failures++;
-    console.error(`✗ prazo: opção do RD "${option}" não existe no site`);
+    console.error(`✗ ${field}: opções do site diferentes das do RD`);
   }
 }
 
@@ -31,4 +53,4 @@ if (failures) {
   console.error(`\n${failures} valor(es) inválido(s) para o RD.`);
   process.exit(1);
 }
-console.log('✓ Todos os valores de segmento, prazo e estado batem com as listas do RD.');
+console.log('✓ Todos os campos de lista do site batem com as opções do RD.');
