@@ -14,7 +14,7 @@ interface MobileMenuItemProps {
 }
 
 const MobileMenuItem = ({ id, title, href, children, hasSubmenu = false }: MobileMenuItemProps) => {
-  const { activeSubmenu, toggleSubmenu } = useMobileMenuContext();
+  const { activeSubmenu, toggleSubmenu, closeMenu } = useMobileMenuContext();
 
   const isActive = activeSubmenu === id;
 
@@ -32,7 +32,7 @@ const MobileMenuItem = ({ id, title, href, children, hasSubmenu = false }: Mobil
   return (
     <li className="space-y-2">
       {!hasSubmenu && href ? (
-        <Link href={href} className="flex w-full items-center justify-between p-2.5">
+        <Link href={href} onClick={closeMenu} className="flex w-full items-center justify-between p-2.5">
           <span className={labelClassName}>{title}</span>
         </Link>
       ) : (
