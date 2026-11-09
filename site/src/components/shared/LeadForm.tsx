@@ -1,6 +1,7 @@
 'use client';
 import { LeadField } from '@/data/lead-forms';
 import { cn } from '@/utils/cn';
+import { trackGenerateLead } from '@/utils/generateLead';
 import { filterInput, limits, validateField } from '@/utils/lead-validation';
 import { track } from '@/utils/track';
 import Script from 'next/script';
@@ -113,6 +114,7 @@ const LeadForm = ({
 
     setStatus('sending');
     setServerError('');
+    const submissionId = `${product}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const params = new URLSearchParams(window.location.search);
     const utm = Object.fromEntries(utmKeys.filter((k) => params.get(k)).map((k) => [k, params.get(k)]));
 
@@ -138,6 +140,7 @@ const LeadForm = ({
         throw new Error(data.error || 'Não foi possível enviar agora.');
       }
       track('quote_submit', { product });
+      trackGenerateLead(submissionId, product);
       setStatus('success');
       setValues({});
       setConsent(false);
