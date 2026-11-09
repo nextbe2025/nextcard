@@ -115,7 +115,7 @@ const Footer = ({ className }: { className?: string }) => {
                   href="https://updo.com.br"
                   className="text-tagline-1 text-primary-50/70 hover:text-primary-50 flex items-center gap-1.5 font-normal transition-colors">
                   Desenvolvido por
-                  <Image src={updoLogo} alt="Updo" className="h-4 w-auto" />
+                  <Image src={updoLogo} alt="UPDO" className="h-6 w-auto" />
                 </Link>
               </div>
             </RevealAnimation>
