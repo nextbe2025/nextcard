@@ -24,7 +24,7 @@ const sections: PolicySection[] = [
     items: [
       'Dados de contato informados nos formulários: nome, e-mail, telefone/WhatsApp, estado e cidade.',
       'Informações sobre o seu negócio: segmento, quantidade de unidades, caixas ou equipamentos, sistema de gestão/PDV utilizado, prazo de implantação e a mensagem que você escrever.',
-      'No formulário de parceiros: razão social, CNPJ, modalidade de interesse e o que você busca com a parceria.',
+      'No formulário de parceiros: razão social, CNPJ, cidade e o que você busca com a parceria.',
       'Dados técnicos do envio: página de origem, endereço de referência (referrer), parâmetros de campanha (UTM), data e hora.',
       'Endereço IP, usado apenas para a verificação de segurança contra robôs e para limitar envios repetidos.',
     ],

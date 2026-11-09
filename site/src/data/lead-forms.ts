@@ -165,13 +165,7 @@ export const partnerFormFields: LeadField[] = [
     required: true,
     autoComplete: 'address-level2',
     placeholder: 'Sua cidade',
-  },
-  {
-    name: 'modalidade',
-    label: 'Modalidade de interesse',
-    type: 'select',
-    required: true,
-    options: ['Indicação', 'Revenda', 'Ainda não decidi'],
+    full: true,
   },
   {
     name: 'interesse',
