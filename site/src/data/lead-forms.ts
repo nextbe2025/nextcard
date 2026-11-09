@@ -39,15 +39,17 @@ export const states = [
   'TO',
 ];
 
+// Same wording as the RD Station selection field "Qual é o segmento do seu negócio?" (cf_qual_e_o_segmento_do_seu_negocio).
+// "Loja de conveniência" has no RD option and is sent to that field as "Outros" (src/utils/rdStation.ts).
 export const foodSegments = [
   'Açaiteria',
-  'Bar ou pub',
+  'Bar ou Pub',
   'Bistrô',
   'Churrascaria',
   'Cafeteria',
   'Delivery',
   'Doceria',
-  'Food truck',
+  'Food Truck',
   'Hamburgueria',
   'Lanchonete',
   'Loja de conveniência',
@@ -55,21 +57,16 @@ export const foodSegments = [
   'Padaria',
   'Pastelaria',
   'Pizzaria',
-  'Posto de combustível',
+  'Posto de Combustível',
   'Restaurante',
-  'Rede ou franquia de alimentação',
+  'Rede/Franquia de Alimentação',
   'Salgaderia',
   'Sorveteria',
-  'Outro',
+  'Outros',
 ];
 
-export const deadlines = [
-  'O mais rápido possível',
-  'Em até 30 dias',
-  'De 1 a 3 meses',
-  'Mais de 3 meses',
-  'Ainda estou avaliando',
-];
+// Same options as the RD Station field "Em quanto tempo pretende implantar?" (cf_em_quanto_tempo_pretende_implantar).
+export const deadlines = ['Imediatamente', 'Nos próximos 30 dias', 'Em até 3 meses', 'Apenas pesquisando'];
 
 const contactFields: LeadField[] = [
   { name: 'nome', label: 'Nome', type: 'text', required: true, autoComplete: 'name', placeholder: 'Seu nome completo' },

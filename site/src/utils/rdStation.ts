@@ -35,6 +35,80 @@ const listFields: Record<string, string> = {
   estado: 'cf_estados',
 };
 
+// Exact option lists of the RD selection fields (RD rejects the conversion for any other value).
+export const rdListOptions: Record<string, string[]> = {
+  segmento: [
+    'Açaiteria',
+    'Bar ou Pub',
+    'Bistrô',
+    'Churrascaria',
+    'Cafeteria',
+    'Delivery',
+    'Doceria',
+    'Food Truck',
+    'Hamburgueria',
+    'Lanchonete',
+    'Marmitaria',
+    'Padaria',
+    'Pastelaria',
+    'Pizzaria',
+    'Posto de Combustível',
+    'Restaurante',
+    'Rede/Franquia de Alimentação',
+    'Salgaderia',
+    'Sorveteria',
+    'Outros',
+  ],
+  prazo: ['Imediatamente', 'Nos próximos 30 dias', 'Em até 3 meses', 'Apenas pesquisando'],
+  estado: ['PR', 'SC', 'RS', 'SP', 'MG', 'RJ', 'DF', 'GO', 'UF Demais', 'Outros'],
+};
+
+const brazilianStates = new Set([
+  'AC',
+  'AL',
+  'AP',
+  'AM',
+  'BA',
+  'CE',
+  'DF',
+  'ES',
+  'GO',
+  'MA',
+  'MT',
+  'MS',
+  'MG',
+  'PA',
+  'PB',
+  'PR',
+  'PE',
+  'PI',
+  'RJ',
+  'RN',
+  'RS',
+  'RO',
+  'RR',
+  'SC',
+  'SP',
+  'SE',
+  'TO',
+]);
+
+const matchOption = (options: string[], value: string) =>
+  options.find((option) => option.localeCompare(value, 'pt-BR', { sensitivity: 'base' }) === 0);
+
+/** Converts a site value to an exact RD option for the list field; never returns a value outside the RD list. */
+export const toRdListValue: Record<string, (value: string) => string | undefined> = {
+  segmento: (value) => matchOption(rdListOptions.segmento, value) ?? 'Outros',
+  prazo: (value) => matchOption(rdListOptions.prazo, value),
+  estado: (value) => {
+    const uf = value.trim().toUpperCase();
+    if (rdListOptions.estado.includes(uf)) {
+      return uf;
+    }
+    return brazilianStates.has(uf) ? 'UF Demais' : 'Outros';
+  },
+};
+
 const SITE_ORIGIN = { cf_site_de_origem: 'nextcard.com.br' };
 
 export type RdLead = {
@@ -48,18 +122,26 @@ const onlyFilled = (obj: Record<string, unknown>) =>
 
 type CustomLevel = 'all' | 'text' | 'none';
 
-const pick = (fields: Record<string, string>, map: Record<string, string>) =>
+const pick = (fields: Record<string, string>, map: Record<string, string>, convert: typeof toRdListValue = {}) =>
   Object.fromEntries(
     Object.entries(map)
       .filter(([siteField]) => fields[siteField])
-      .map(([siteField, rdField]) => [rdField, fields[siteField]]),
+      .map(([siteField, rdField]) => [
+        rdField,
+        convert[siteField] ? convert[siteField](fields[siteField]) : fields[siteField],
+      ])
+      .filter(([, value]) => value !== undefined),
   );
 
 export function buildRdPayload({ product, fields, utm }: RdLead, level: CustomLevel = 'all') {
   const custom =
     level === 'none'
       ? {}
-      : { ...SITE_ORIGIN, ...pick(fields, textFields), ...(level === 'all' ? pick(fields, listFields) : {}) };
+      : {
+          ...SITE_ORIGIN,
+          ...pick(fields, textFields),
+          ...(level === 'all' ? pick(fields, listFields, toRdListValue) : {}),
+        };
 
   return {
     event_type: 'CONVERSION',

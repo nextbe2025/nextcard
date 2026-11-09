@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check:rd": "node --experimental-strip-types --no-warnings scripts/check-rd-options.mts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
