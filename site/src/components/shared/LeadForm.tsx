@@ -184,8 +184,9 @@ const LeadForm = ({
           const id = `${product}-${field.name}`;
           const error = errors[field.name];
           return (
-            <div key={field.name} className={cn('space-y-1.5', field.full && 'sm:col-span-2')}>
-              <label htmlFor={id} className="text-secondary text-tagline-2 block font-medium">
+            <div key={field.name} className={cn('flex flex-col gap-1.5', field.full && 'sm:col-span-2')}>
+              {/* Grows and sits at the bottom so inputs line up when a neighbouring label wraps to two lines. */}
+              <label htmlFor={id} className="text-secondary text-tagline-2 block font-medium sm:flex-1 sm:content-end">
                 {field.label}
                 {field.required && <span className="text-primary-500"> *</span>}
               </label>
