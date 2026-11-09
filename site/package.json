@@ -1,6 +1,6 @@
 {
-  "name": "pos-system",
-  "version": "2.1.0",
+  "name": "nextcard-site",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "postinstall": "tsx folder-rename.ts --utb"
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -47,7 +46,6 @@
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4",
-    "tsx": "^4.21.0",
     "typescript": "^5"
   },
   "resolutions": {
