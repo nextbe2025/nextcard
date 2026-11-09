@@ -10,10 +10,8 @@ export const rdConversionIdentifier = (product: string) =>
 
 /**
  * Site fields → RD custom fields (they must exist in RD: Configurações > Campos personalizados).
- * RD rejects the whole conversion when a field is unknown or a list field gets a value outside its options, so:
- * - `textFields` are free-text/number fields and are always sent.
- * - `listFields` may be selection lists in RD; they are sent first, and if RD rejects the conversion it is retried
- *   without them (then without any custom field), so a lead is never lost because of a field mismatch.
+ * `textFields` are free-text fields in RD; `listFields` are RD selection lists and their values are converted to the
+ * exact RD options (see rdListOptions). If RD still rejects a field, sendToRdStation retries without it.
  */
 const textFields: Record<string, string> = {
   caixas: 'cf_quantos_caixas_existem_em_cada_unidade',
@@ -120,7 +118,7 @@ export const toRdListValue: Record<string, (value: string) => string | undefined
   },
 };
 
-const SITE_ORIGIN = { cf_site_de_origem: 'nextcard.com.br' };
+// cf_site_de_origem is not sent: in RD it is a list whose only option is "LP NEXTBE".
 
 export type RdLead = {
   product: string;
@@ -130,8 +128,6 @@ export type RdLead = {
 
 const onlyFilled = (obj: Record<string, unknown>) =>
   Object.fromEntries(Object.entries(obj).filter(([, value]) => value !== undefined && value !== ''));
-
-type CustomLevel = 'all' | 'text' | 'none';
 
 const pick = (fields: Record<string, string>, map: Record<string, string>, convert: typeof toRdListValue = {}) =>
   Object.fromEntries(
@@ -144,15 +140,15 @@ const pick = (fields: Record<string, string>, map: Record<string, string>, conve
       .filter(([, value]) => value !== undefined),
   );
 
-export function buildRdPayload({ product, fields, utm }: RdLead, level: CustomLevel = 'all') {
-  const custom =
-    level === 'none'
-      ? {}
-      : {
-          ...SITE_ORIGIN,
-          ...pick(fields, textFields),
-          ...(level === 'all' ? pick(fields, listFields, toRdListValue) : {}),
-        };
+/** `skip` lists RD custom fields to leave out ('*' leaves out every custom field). */
+export function buildRdPayload({ product, fields, utm }: RdLead, skip: Set<string> = new Set()) {
+  const custom = skip.has('*')
+    ? {}
+    : Object.fromEntries(
+        Object.entries({ ...pick(fields, textFields), ...pick(fields, listFields, toRdListValue) }).filter(
+          ([rdField]) => !skip.has(rdField),
+        ),
+      );
 
   return {
     event_type: 'CONVERSION',
@@ -178,34 +174,54 @@ export function buildRdPayload({ product, fields, utm }: RdLead, level: CustomLe
   };
 }
 
-const post = (lead: RdLead, apiKey: string, level: CustomLevel) =>
+const post = (lead: RdLead, apiKey: string, skip: Set<string>) =>
   fetch(`${RD_ENDPOINT}?api_key=${encodeURIComponent(apiKey)}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(buildRdPayload(lead, level)),
+    body: JSON.stringify(buildRdPayload(lead, skip)),
     signal: AbortSignal.timeout(10_000),
   });
 
+/** Custom fields RD rejected, from its error body (paths like "$.payload.cf_x"). */
+const rejectedCustomFields = (body: string) => {
+  try {
+    const { errors } = JSON.parse(body) as { errors?: { path?: string }[] };
+    return (errors ?? [])
+      .map((error) => error.path?.match(/\$\.payload\.(cf_\w+)/)?.[1])
+      .filter((field): field is string => Boolean(field));
+  } catch {
+    return [];
+  }
+};
+
+/**
+ * Sends the conversion. When RD rejects custom fields (unknown field or value outside a list), it retries without
+ * exactly those fields, and as a last resort without any custom field, so the lead itself is never lost.
+ */
 export async function sendToRdStation(lead: RdLead, apiKey: string) {
-  const levels: CustomLevel[] = ['all', 'text', 'none'];
-  let lastError = '';
-  for (const level of levels) {
-    const response = await post(lead, apiKey, level);
+  const skip = new Set<string>();
+  const problems: string[] = [];
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const response = await post(lead, apiKey, skip);
     if (response.ok) {
-      if (level !== 'all') {
+      if (problems.length) {
         // eslint-disable-next-line no-console
-        console.warn(
-          `[leads] RD aceitou a conversão só sem parte dos campos personalizados (nível "${level}"):`,
-          lastError,
-        );
+        console.warn(`[leads] RD aceitou a conversão sem os campos: ${[...skip].join(', ')}`, problems);
       }
       return;
     }
-    lastError = `RD Station respondeu ${response.status}: ${(await response.text().catch(() => '')).slice(0, 400)}`;
-    // Only field problems (400/422) are worth retrying with fewer fields; auth or server errors are not.
-    if (response.status !== 400 && response.status !== 422) {
+    const body = (await response.text().catch(() => '')).slice(0, 600);
+    problems.push(`RD Station respondeu ${response.status}: ${body}`);
+    // Only field problems (400/422) are worth retrying; auth or server errors are not.
+    if ((response.status !== 400 && response.status !== 422) || skip.has('*')) {
       break;
     }
+    const rejected = rejectedCustomFields(body).filter((field) => !skip.has(field));
+    if (rejected.length) {
+      rejected.forEach((field) => skip.add(field));
+    } else {
+      skip.add('*');
+    }
   }
-  throw new Error(lastError);
+  throw new Error(problems.join(' | '));
 }
