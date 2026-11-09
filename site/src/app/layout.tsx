@@ -2,6 +2,7 @@ import SmoothScroll from '@/components/animation/SmoothScroll';
 import BackToTop from '@/components/shared/BackToTop';
 import Footer from '@/components/shared/footer/Footer';
 import Navbar from '@/components/shared/navbar/Navbar';
+import RouteProgress from '@/components/shared/RouteProgress';
 import { caveat, interTight } from '@/utils/font';
 import { generateMetadata } from '@/utils/generateMetaData';
 import { Metadata } from 'next';
@@ -35,6 +36,7 @@ export default function RootLayout({
             title="Google Tag Manager"
           />
         </noscript>
+        <RouteProgress />
         <SmoothScroll />
         <Navbar />
         {children}

@@ -423,3 +423,14 @@ body {
 .slider-handle.no-transition .handle-circle {
   transition: none !important;
 }
+
+/* Top loading bar on page changes (src/components/shared/RouteProgress.tsx) */
+.route-progress {
+  transition: opacity 300ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-progress,
+  .route-progress > div {
+    transition: none !important;
+  }
+}
