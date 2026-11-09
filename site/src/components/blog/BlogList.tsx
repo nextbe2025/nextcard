@@ -99,10 +99,13 @@ const BlogList = ({ posts }: { posts: BlogPost[] }) => {
           </RevealAnimation>
         )}
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Flex instead of grid so an incomplete last row (or a single article) stays centered. */}
+        <div className="flex flex-wrap justify-center gap-6">
           {shown.map((post, index) => (
             <RevealAnimation key={post.slug} delay={(index % 3) * 0.1} start="top 95%">
-              <PostCard post={post} />
+              <div className="w-full sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)]">
+                <PostCard post={post} />
+              </div>
             </RevealAnimation>
           ))}
         </div>
