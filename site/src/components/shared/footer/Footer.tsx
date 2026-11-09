@@ -10,6 +10,7 @@ import darkLogo from '@public/images/shared/main-logo-dark.svg';
 import updoLogo from '@public/images/shared/updo-logo-branca.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import CtaArrow from '../CtaArrow';
 import Cta from '../tracking/Cta';
 import FooterDivider from './FooterDivider';
 
@@ -124,8 +125,9 @@ const Footer = ({ className }: { className?: string }) => {
                 href="/contato"
                 id="footer_solicitar_cotacao"
                 location="footer"
-                className="btn btn-primary hover:btn-white btn-sm">
+                className="btn btn-primary hover:btn-white btn-sm btn-arrow">
                 <span>Solicitar Cotação</span>
+                <CtaArrow />
               </Cta>
             </RevealAnimation>
           </div>

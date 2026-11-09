@@ -2,6 +2,7 @@ import RevealAnimation from '../animation/RevealAnimation';
 import SplitHeading from '../animation/SplitHeading';
 import { KioskIcon, TicketIcon, TurnstileIcon } from '../shared/BrandIcons';
 import FloatingCard from '../shared/FloatingCard';
+import CtaArrow from '../shared/CtaArrow';
 import Cta from '../shared/tracking/Cta';
 
 const Hero = () => {
@@ -66,8 +67,9 @@ const Hero = () => {
                   href="/contato"
                   id="hero_solicitar_cotacao"
                   location="hero"
-                  className="btn btn-primary hover:btn-white btn-lg w-full sm:w-auto">
+                  className="btn btn-primary hover:btn-white btn-lg btn-arrow w-full sm:w-auto">
                   <span>Solicite uma cotação</span>
+                  <CtaArrow className="size-[18px]" />
                 </Cta>
               </RevealAnimation>
               <RevealAnimation delay={0.9}>

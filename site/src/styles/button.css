@@ -222,3 +222,25 @@ NextSaaS Buttons Styles
     @apply fill-secondary;
   }
 }
+
+/* CTA with a persistent arrow (e.g. "Solicitar cotação").
+   Unlayered on purpose so it wins over the btn utility's hover chevron and text shift. */
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.btn-arrow::before {
+  content: none;
+}
+.btn-arrow:hover > span {
+  translate: none;
+}
+.btn-arrow > .btn-arrow-icon {
+  flex-shrink: 0;
+  transition: translate 300ms ease-in-out;
+}
+.btn-arrow:hover > .btn-arrow-icon {
+  translate: 4px 0;
+}

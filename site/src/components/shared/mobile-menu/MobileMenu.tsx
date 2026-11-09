@@ -10,6 +10,7 @@ import type { ComponentType } from 'react';
 import BackgroundLines from '../BackgroundLines';
 import BackgroundMark from '../BackgroundMark';
 import { PhoneIcon, WhatsAppIcon } from '../BrandIcons';
+import CtaArrow from '../CtaArrow';
 import Cta from '../tracking/Cta';
 import MenuCloseButton from './MenuCloseButton';
 import MobileMenuItem from './MobileMenuItem';
@@ -96,8 +97,9 @@ const MobileMenu = ({ menuData }: { menuData: MobileMenuGroup[] }) => {
               id="mobile_menu_solicitar_cotacao"
               location="mobile_menu"
               onClick={closeMenu}
-              className="btn btn-primary hover:btn-secondary btn-lg mt-6 block w-full text-center">
+              className="btn btn-primary hover:btn-secondary btn-lg btn-arrow mt-6 w-full text-center">
               <span>{cotacao.title}</span>
+              <CtaArrow className="size-[18px]" />
             </Cta>
           )}
 

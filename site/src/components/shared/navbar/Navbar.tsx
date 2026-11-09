@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import MobileMenu from '../mobile-menu/MobileMenu';
+import CtaArrow from '../CtaArrow';
 import Cta from '../tracking/Cta';
 import MobileMenuButton from './MobileMenuButton';
 import SolutionsMenu from './SolutionsMenu';
@@ -96,8 +97,9 @@ const Navbar = () => {
               </ul>
             </nav>
             <div className="hidden items-center justify-center xl:flex">
-              <Cta href="/contato" id="nav_solicitar_cotacao" location="navbar" className="btn btn-md btn-primary hover:btn-secondary">
+              <Cta href="/contato" id="nav_solicitar_cotacao" location="navbar" className="btn btn-md btn-primary hover:btn-secondary btn-arrow">
                 <span>Solicitar Cotação</span>
+                <CtaArrow />
               </Cta>
             </div>
             <MobileMenuButton />
