@@ -31,13 +31,16 @@ npm run format     # Prettier
 
 Crie um `.env.local` em `site/` para testar localmente (não é versionado).
 
-| Variável                         | Obrigatória | Uso                                                                                                                            |
-| -------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `LEAD_WEBHOOK_URL`               | Sim (prod)  | Webhook que recebe os leads do formulário (`/api/leads`). Sem ela, em produção o formulário responde que não está configurado. |
-| `TURNSTILE_SECRET_KEY`           | Não         | Chave secreta do Cloudflare Turnstile (captcha do formulário).                                                                 |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Não         | Chave pública do Turnstile. Configure junto com a secreta.                                                                     |
+| Variável                         | Obrigatória         | Uso                                                                                                                                                                              |
+| -------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RD_STATION_API_KEY`             | Uma das duas (prod) | Token público do RD Station Marketing (Integrações > Tokens). Cada lead vira uma conversão no RD (`contato`, `cotacao_totem`, `cotacao_catraca`, `cotacao_comanda`, `parceria`). |
+| `LEAD_WEBHOOK_URL`               | Uma das duas (prod) | Webhook opcional que também recebe os leads (`/api/leads`) em JSON.                                                                                                              |
+| `TURNSTILE_SECRET_KEY`           | Não                 | Chave secreta do Cloudflare Turnstile (captcha do formulário).                                                                                                                   |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Não                 | Chave pública do Turnstile. Configure junto com a secreta.                                                                                                                       |
 
-Em desenvolvimento, sem `LEAD_WEBHOOK_URL`, o lead é só registrado no console.
+O lead é enviado a todos os destinos configurados e conta como recebido se ao menos um aceitar. Em produção, sem nenhum dos dois, o formulário responde que não está configurado; em desenvolvimento, o lead é só registrado no console.
+
+Campos extras dos formulários (segmento, quantidades, mensagem etc.) só vão para o RD depois de criados como campos personalizados no RD e mapeados em `src/utils/rdStation.ts`.
 
 ## Deploy (Vercel)
 

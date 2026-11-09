@@ -1,5 +1,6 @@
 import { leadFormsByProduct } from '@/data/lead-forms';
 import { cleanText, validateField } from '@/utils/lead-validation';
+import { sendToRdStation } from '@/utils/rdStation';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
@@ -156,30 +157,55 @@ export async function POST(request: Request) {
     receivedAt: new Date().toISOString(),
   };
 
-  const webhook = process.env.LEAD_WEBHOOK_URL;
+  // Each configured destination gets the lead. The lead counts as received when at least one of them accepts it, so
+  // the visitor is never asked to resend a lead that is already stored somewhere (which would duplicate it).
+  const destinations: { name: string; send: () => Promise<void> }[] = [];
 
-  if (!webhook) {
+  const rdKey = process.env.RD_STATION_API_KEY;
+  if (rdKey) {
+    destinations.push({ name: 'rd_station', send: () => sendToRdStation({ product, fields, utm }, rdKey) });
+  }
+
+  const webhook = process.env.LEAD_WEBHOOK_URL;
+  if (webhook) {
+    destinations.push({
+      name: 'webhook',
+      send: async () => {
+        const response = await fetch(webhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(lead),
+          signal: AbortSignal.timeout(10_000),
+        });
+        if (!response.ok) {
+          throw new Error(`Webhook respondeu ${response.status}`);
+        }
+      },
+    });
+  }
+
+  if (destinations.length === 0) {
     if (process.env.NODE_ENV === 'production') {
       return json({ ok: false, error: 'O formulário ainda não está configurado.' }, 503);
     }
     // eslint-disable-next-line no-console
-    console.info('[leads] LEAD_WEBHOOK_URL não configurada; lead apenas registrado no console:', lead);
+    console.info(
+      '[leads] Nenhum destino configurado (RD_STATION_API_KEY / LEAD_WEBHOOK_URL); lead só no console:',
+      lead,
+    );
     return json({ ok: true, delivered: false });
   }
 
-  try {
-    const response = await fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lead),
-    });
-    if (!response.ok) {
-      throw new Error(`Webhook respondeu ${response.status}`);
+  const results = await Promise.allSettled(destinations.map((destination) => destination.send()));
+  results.forEach((result, index) => {
+    if (result.status === 'rejected') {
+      // eslint-disable-next-line no-console
+      console.error(`[leads] falha ao enviar para ${destinations[index].name}:`, result.reason);
     }
+  });
+
+  if (results.some((result) => result.status === 'fulfilled')) {
     return json({ ok: true, delivered: true });
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('[leads] falha ao enviar para o webhook:', error);
-    return json({ ok: false, error: 'Não foi possível enviar agora. Tente novamente.' }, 502);
   }
+  return json({ ok: false, error: 'Não foi possível enviar agora. Tente novamente.' }, 502);
 }
