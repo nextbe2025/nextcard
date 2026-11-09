@@ -4,8 +4,6 @@ import { MobileMenuProvider } from '@/context/MobileMenuContext';
 import { mobileMenuData } from '@/data/navbar-data';
 import { useNavbarScroll } from '@/hooks/useScrollHeader';
 import { cn } from '@/utils/cn';
-import logoDark from '@public/images/shared/logo-dark.svg';
-import logo from '@public/images/shared/logo.svg';
 import mainLogo from '@public/images/shared/main-logo.svg';
 import mainLogoDark from '@public/images/shared/main-logo-dark.svg';
 import Image from 'next/image';
@@ -46,13 +44,9 @@ const Navbar = () => {
             <div>
               <Link href="/">
                 <span className="sr-only">Home</span>
-                <figure className="hidden lg:block lg:max-w-[198px]">
+                <figure className="block w-[150px] pl-2 sm:w-[170px] lg:w-[198px] lg:pl-0">
                   <Image src={mainLogo} alt="NEXTCARD" className="block h-auto w-full dark:hidden" />
                   <Image src={mainLogoDark} alt="NEXTCARD" className="hidden h-auto w-full dark:block" />
-                </figure>
-                <figure className="block max-w-[44px] lg:hidden">
-                  <Image src={logo} alt="NEXTCARD" className="block w-full dark:hidden" />
-                  <Image src={logoDark} alt="NEXTCARD" className="hidden w-full dark:block" />
                 </figure>
               </Link>
             </div>

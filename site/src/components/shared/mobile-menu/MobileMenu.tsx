@@ -2,8 +2,8 @@
 'use client';
 import { useMobileMenuContext } from '@/context/MobileMenuContext';
 import { cn } from '@/utils/cn';
-import logoDark from '@public/images/shared/logo-dark.svg';
-import logoIcon from '@public/images/shared/logo.svg';
+import mainLogoDark from '@public/images/shared/main-logo-dark.svg';
+import mainLogo from '@public/images/shared/main-logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
@@ -44,9 +44,9 @@ const MobileMenu = ({ menuData }: { menuData: MobileMenuGroup[] }) => {
         <div className="flex items-center justify-between">
           <Link href="/">
             <span className="sr-only">Home</span>
-            <figure className="max-w-[44px]">
-              <Image src={logoIcon} alt="NEXTCARD" className="block w-full dark:hidden" />
-              <Image src={logoDark} alt="NEXTCARD" className="hidden w-full dark:block" />
+            <figure className="w-[150px] sm:w-[170px]">
+              <Image src={mainLogo} alt="NEXTCARD" className="block h-auto w-full dark:hidden" />
+              <Image src={mainLogoDark} alt="NEXTCARD" className="hidden h-auto w-full dark:block" />
             </figure>
           </Link>
           {/* close btn  */}
