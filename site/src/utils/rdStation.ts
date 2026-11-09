@@ -25,6 +25,8 @@ const textFields: Record<string, string> = {
   cnpj: 'cf_cnpj',
   mensagem: 'cf_mensagem',
   interesse: 'cf_o_que_voce_busca_com_a_nossa_parceria',
+  // Free-text copy of the segment, so it is kept even if the selection field below rejects the value.
+  segmento: 'cf_ktb_nextcard_campo_aberto_qual_e_o_segmento_do_seu',
 };
 
 const listFields: Record<string, string> = {
