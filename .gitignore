@@ -10,3 +10,6 @@ _template_extract/
 
 # Client-provided raw photos staging folder (root-level, not the site's public/images)
 /images/
+
+# HTML entregue para a LP de parceiros no RD Station (não faz parte do site)
+lp-parceiros-rd.html
